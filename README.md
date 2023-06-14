@@ -1,2 +1,7 @@
-# DC_project
-DC 2022-23 Web-Dev Python project
+# Установка виртуального окружения и зависимостей:
+* `...\> python -m venv env`
+* `...\> env\Scripts\activate`
+* `(env) ...\> pip install -r requirements.txt`
+
+# КАЖДЫЙ РАЗ КОГДА ДОБАВЛЯЕМ ЗАВИСИМОСТЬ:
+* `(env) ...\> pip freeze > requirements.txt` из корня проекта.

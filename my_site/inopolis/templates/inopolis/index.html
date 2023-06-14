@@ -1,0 +1,218 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% if messages %}
+        	{% for message in messages %}
+          	<div>
+            	{{ message }}
+          	</div>
+        	{% endfor %}
+{% endif %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/bulma.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/index_style.css' %}">
+<!--    <link rel="stylesheet" href="./css/bulma.min.css">-->
+<!--    <link rel="stylesheet" href="./css/index_style.css">-->
+</head>
+<body>
+
+
+    <nav class="navbar is-dark" role="navigation" aria-label="main navigation" >
+        <div class="navbar-brand">
+          <a class="navbar-item" href="./index.html">
+            <img src="{% static 'inopolis/img/logo.png' %}" >
+          </a>
+
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu is-dark">
+          <div class="navbar-start">
+            <a class="navbar-item" href="./index.html">
+              Explore films
+            </a>
+
+
+
+
+
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link" href="#">
+                Categories
+              </a>
+
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="#">
+                  Action
+                </a>
+                <a class="navbar-item" href="#">
+                  Drama
+                </a>
+                <a class="navbar-item" href="#">
+                  Comedy
+                </a>
+                <hr class="navbar-divider">
+                <a class="navbar-item" href="#">
+                  Report an issue
+                </a>
+              </div>
+            </div>
+            <a class="navbar-item" href="./film_page.html">
+              Random movie
+            </a>
+          </div>
+
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <div class="buttons">
+                  {% if user.is_authenticated %}
+                    <a class="button is-light" href="{% url 'profile' %}">Profile</a>
+                    <a class="button is-light" href="{% url 'logout' %}">Выход</a>
+                  {% else %}
+                    <a class="button is-light" href="{% url 'register' %}">
+                        <strong>Sign up</strong>
+                    </a>
+                    <a class="button is-light" href="{% url 'login' %}">Log in</a>
+                  {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+      <div class="container mt-4 pt-1 my_container" >
+
+
+
+
+
+
+
+
+
+        <div class="container film_card">
+            <article class="columns featured">
+
+                <div class="column is-7 ">
+                  <img src="{% static 'inopolis/img/snatch.jpg' %}" alt="">
+                </div>
+                <div class="column is-5 featured-content va">
+                  <div class="content has-text-white">
+
+                    <h2 class="title ">Snatch.</h2>
+                    <h3 ><strong>Genre:</strong> crime, comedy, action</h3>
+                    <p ><strong>Description:</strong> Illegal boxing promoter Turkish (Jason Statham) convinces gangster Brick Top (Alan Ford) to offer bets on bare-knuckle boxer Mickey (Brad Pitt) at his bookie business. When Mickey does not throw his first fight as agreed, an infuriated Brick Top demands another match. Meanwhile, gangster Frankie Four Fingers (Benicio del Toro) comes to place a bet for a friend with Brick Top's bookies, as multiple criminals converge on a stolen diamond that Frankie has come to London to sell.</p>
+                    <p><strong>Rating:</strong>R (Some Nudity|Language|Strong Violence)</p>
+
+
+                    <br>
+                    <a href="./film_page.html" class="button is-light">Read More</a>
+                  </div>
+
+                </div>
+              </article>
+        </div>
+        <hr >
+
+
+        <div class="container film_card">
+          <article class="columns featured">
+
+              <div class="column is-7 ">
+                <img src="{% static 'inopolis/img/featured-image.png' %}" alt="">
+              </div>
+              <div class="column is-5 featured-content va">
+                <div class="all-text-white">
+
+                  <h2 class="title ">Lorem</h2>
+                  <h3 ><strong>Genre:</strong> Lorem, ipsum, dolor</h3>
+                  <p ><strong>Description:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit autem quos sint eius dolores iure, recusandae modi repellendus atque? Unde quam eos asperiores explicabo expedita architecto, possimus, cum harum necessitatibus fuga aliquid natus. Dignissimos, doloribus odio dolore laboriosam commodi dolorum quasi culpa voluptatum. Iusto.</p>
+                  <p><strong>Rating:</strong> Lorem ipsum dolor sit amet consectetur.</p>
+
+
+                  <br>
+                  <a href="./film_page.html" class="button is-light">Read More</a>
+                </div>
+
+              </div>
+            </article>
+      </div>
+      <hr><div class="container film_card">
+        <article class="columns featured">
+
+            <div class="column is-7 ">
+              <img src="{% static 'inopolis/img/featured-image.png' %}" alt="">
+            </div>
+            <div class="column is-5 featured-content va">
+              <div class="all-text-white">
+
+                <h2 class="title ">Lorem</h2>
+                <h3 ><strong>Genre:</strong> Lorem, ipsum, dolor</h3>
+                <p ><strong>Description:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit autem quos sint eius dolores iure, recusandae modi repellendus atque? Unde quam eos asperiores explicabo expedita architecto, possimus, cum harum necessitatibus fuga aliquid natus. Dignissimos, doloribus odio dolore laboriosam commodi dolorum quasi culpa voluptatum. Iusto.</p>
+                <p><strong>Rating:</strong> Lorem ipsum dolor sit amet consectetur.</p>
+
+
+                <br>
+                <a href="./film_page.html" class="button is-light">Read More</a>
+              </div>
+
+            </div>
+          </article>
+    </div>
+    <hr><div class="container film_card">
+      <article class="columns featured">
+
+          <div class="column is-7 ">
+            <img src="{% static 'inopolis/img/featured-image.png' %}" alt="">
+          </div>
+          <div class="column is-5 featured-content va">
+            <div class="all-text-white">
+
+              <h2 class="title ">Lorem</h2>
+              <h3 ><strong>Genre:</strong> Lorem, ipsum, dolor</h3>
+              <p ><strong>Description:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit autem quos sint eius dolores iure, recusandae modi repellendus atque? Unde quam eos asperiores explicabo expedita architecto, possimus, cum harum necessitatibus fuga aliquid natus. Dignissimos, doloribus odio dolore laboriosam commodi dolorum quasi culpa voluptatum. Iusto.</p>
+              <p><strong>Rating:</strong> Lorem ipsum dolor sit amet consectetur.</p>
+
+
+              <br>
+              <a href="./film_page.html" class="button is-light">Read More</a>
+            </div>
+
+          </div>
+        </article>
+  </div>
+  <hr>
+
+
+
+
+
+      </div>
+
+<footer class="footer my_footer">
+    <div class="content has-text-centered">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil doloribus facilis id libero placeat quasi ratione velit officia mollitia. Aut unde dicta incidunt temporibus nobis? Architecto ducimus minima delectus nesciunt nihil ex sapiente libero ab.</p>
+        <p>Moscow 2023</p>
+    </div>
+</footer>
+
+
+
+
+
+
+<script src="./js/navbarMenu.js"></script>
+
+</body>
+</html>

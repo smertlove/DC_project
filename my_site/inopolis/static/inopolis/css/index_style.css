@@ -1,0 +1,32 @@
+body {
+    background: #000;
+  }
+
+
+
+  .my_video {
+    width: 100%;
+    height: auto;
+}
+
+.all-text-white > p, h3, h1, h2 {
+    color: #ffffff !important;
+}
+
+strong {
+    color: #ffffff;
+}
+
+.my_footer {
+    background: #000;
+    color: #5c5b5b;
+}
+
+
+
+.film_card {
+    /* background-color: #5c5b5b; */
+    padding: 2vh;
+    margin: 2vh;
+    /* border-radius: 2vh; */
+}

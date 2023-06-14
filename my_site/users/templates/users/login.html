@@ -1,0 +1,74 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/bulma.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/form_style.css' %}">
+<!--    <link rel="stylesheet" href="./css/bulma.min.css">-->
+<!--    <link rel="stylesheet" href="./css/form_style.css">-->
+</head>
+
+  <body>
+    <section class="hero is-fullheight has-text-centered">
+      <div class="hero-body">
+        <div class="login">
+            <figure >
+                <img src="{% static 'inopolis/img/logo.png' %}" class="login_img" alt="" >
+            </figure>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+
+                {{ form|crispy }}
+
+
+<!--            <div class="field">-->
+<!--                <label class="label has-text-white">Login or email</label>-->
+<!--              <div class="control">-->
+<!--                <input class="input is-medium " type="text" placeholder="example@email.com" autocomplete="username" required />-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="field">-->
+<!--                <label class="label has-text-white">Password</label>-->
+<!--              <div class="control">-->
+<!--                <input class="input is-medium " type="password" placeholder="**********" autocomplete="current-password" required />-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <br />-->
+
+            <button class="button is-block is-fullwidth is-light is-medium is-rounded q " type="submit">Войти</button>
+<!--              <a href="./index.html">login</a>-->
+<!--            </button>-->
+
+          </form>
+          <br>
+          <nav class="level">
+              <div class="level-item has-text-centered">
+              <div>
+                Нужен аккаунт?<a href="{% url 'register' %}" class="is-link has-text-white">Регистрация</a>
+              </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <a href="#" class="is-link has-text-white">Forgot Password?</a>
+              </div>
+            </div>
+            <div class="level-item has-text-centered">
+              <div>
+                <a href="./signup.html" class="is-link has-text-white">Create an Account</a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </section>
+  </body>
+
+</html>

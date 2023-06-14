@@ -1,0 +1,119 @@
+{% load static %}
+{% load crispy_forms_tags %}
+<!--<!DOCTYPE html>-->
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/bulma.min.css' %}">
+    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/form_style.css' %}">
+<!--    <link rel="stylesheet" href="./css/bulma.min.css">-->
+<!--    <link rel="stylesheet" href="./css/form_style.css">-->
+</head>
+
+  <body>
+
+    <section class="hero is-fullheight has-text-centered">
+      <div class="hero-body">
+        <div class="login">
+            <figure >
+               <img src="{% static 'inopolis/img/logo.png' %}" class="login_img" alt="" >
+            </figure>
+            <br>
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ form|crispy }}
+
+
+
+<!--            <div class="field">-->
+<!--                <label class="label has-text-white">Username</label>-->
+<!--              <div class="control">-->
+<!--                <input class="input is-medium " name="username" type="text" placeholder="Batman" autocomplete="username" required />-->
+<!--              </div>-->
+<!--            </div>-->
+
+<!--            <div class="field">-->
+<!--              <label class="label has-text-white">Email</label>-->
+<!--            <div class="control">-->
+<!--              <input class="input is-medium " name="email" type="email" placeholder="example@email.com" autocomplete="username" required />-->
+<!--            </div>-->
+<!--          </div>-->
+
+
+<!--&lt;!&ndash;          <div class="field">&ndash;&gt;-->
+<!--&lt;!&ndash;            <label class="label has-text-white">Birth date</label>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="control">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input class="input is-medium " type="date" required />&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+
+<!--        <div class="field">-->
+<!--          <label class="label has-text-white">Password</label>-->
+<!--        <div class="control">-->
+<!--          <input class="input is-medium " name="password1" type="password" placeholder="**********" autocomplete="username" required />-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+<!--      <div class="field">-->
+<!--        <label class="label has-text-white">Confirm password</label>-->
+<!--      <div class="control">-->
+<!--        <input class="input is-medium " name="password2" type="password" placeholder="**********" autocomplete="username" required />-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="field">-->
+<!--      <div class="control has-text-white">-->
+<!--        &lt;!&ndash; <label class="checkbox"> &ndash;&gt;-->
+<!--          <input type="checkbox">-->
+<!--          I agree to the <a href="#" class="has-text-light">terms and conditions</a>, <a href="#" class="has-text-light">Data policy</a> and <a href="#" class="has-text-light">Cookies policy</a>.-->
+<!--        &lt;!&ndash; </label> &ndash;&gt;-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--            <br />-->
+            <button class="button is-block is-fullwidth is-light is-medium is-rounded q " type="submit">Регистрация</button>
+<!--              <a href="./index.html">Sign up now! </a>-->
+<!--            </button>-->
+          </form>
+          <br>
+
+        </div>
+      </div>
+    </section>
+  </body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
