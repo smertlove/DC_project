@@ -13,48 +13,40 @@
         <form method="POST">
 
             {% csrf_token %}
+           <div class="field">
+               <label class="label has-text-white">Username</label>
+             <div class="control">
+              {{ form.username|as_crispy_field }}
+              </div>
+            </div>
 
-            {{ form|crispy }}
+           <div class="field">
+             <label class="label has-text-white">Email</label>
+           <div class="control">
+            {{ form.email|as_crispy_field }}
+           </div>
+         </div>
 
+          <!-- <div class="field">
+            <label class="label has-text-white">Birth date</label>
+          <div class="control">
+            <input class="input is-medium " type="date" required />
+          </div>
+        </div> -->
 
+       <div class="field">
+         <label class="label has-text-white">Password</label>
+       <div class="control">
+        {{ form.password1|as_crispy_field }}
+       </div>
+     </div>
 
-<!--            <div class="field">-->
-<!--                <label class="label has-text-white">Username</label>-->
-<!--              <div class="control">-->
-<!--                <input class="input is-medium " name="username" type="text" placeholder="Batman" autocomplete="username" required />-->
-<!--              </div>-->
-<!--            </div>-->
-
-<!--            <div class="field">-->
-<!--              <label class="label has-text-white">Email</label>-->
-<!--            <div class="control">-->
-<!--              <input class="input is-medium " name="email" type="email" placeholder="example@email.com" autocomplete="username" required />-->
-<!--            </div>-->
-<!--          </div>-->
-
-
-<!--&lt;!&ndash;          <div class="field">&ndash;&gt;-->
-<!--&lt;!&ndash;            <label class="label has-text-white">Birth date</label>&ndash;&gt;-->
-<!--&lt;!&ndash;          <div class="control">&ndash;&gt;-->
-<!--&lt;!&ndash;            <input class="input is-medium " type="date" required />&ndash;&gt;-->
-<!--&lt;!&ndash;          </div>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-
-<!--        <div class="field">-->
-<!--          <label class="label has-text-white">Password</label>-->
-<!--        <div class="control">-->
-<!--          <input class="input is-medium " name="password1" type="password" placeholder="**********" autocomplete="username" required />-->
-<!--        </div>-->
-<!--      </div>-->
-
-
-<!--      <div class="field">-->
-<!--        <label class="label has-text-white">Confirm password</label>-->
-<!--      <div class="control">-->
-<!--        <input class="input is-medium " name="password2" type="password" placeholder="**********" autocomplete="username" required />-->
-<!--      </div>-->
-<!--    </div>-->
+     <div class="field">
+       <label class="label has-text-white">Confirm password</label>
+     <div class="control">
+      {{ form.password2|as_crispy_field }}
+     </div>
+   </div>
 
 <!--    <div class="field">-->
 <!--      <div class="control has-text-white">-->
