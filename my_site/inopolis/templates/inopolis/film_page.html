@@ -1,210 +1,126 @@
+{% extends "inopolis/base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
-
-    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/bulma.min.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/index_style.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/film_page_style.css' %}">
-<!--    <link rel="stylesheet" href="./css/bulma.min.css">-->
-<!--    <link rel="stylesheet" href="./css/index_style.css">-->
-<!--    <link rel="stylesheet" href="./css/film_page_style.css">-->
-</head>
-<body>
-
-
-    <nav class="navbar is-dark" role="navigation" aria-label="main navigation" >
-        <div class="navbar-brand">
-          <a class="navbar-item" href="./index.html" >
-            <img src="./img/logo.png" >
-          </a>
-
-          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-        </div>
-
-        <div id="navbarBasicExample" class="navbar-menu is-dark">
-          <div class="navbar-start">
-            <a class="navbar-item" href="./index.html">
-              Explore films
-            </a>
 
 
 
+{% block "content" %}
 
-
-            <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link" href="#">
-                Categories
-              </a>
-
-              <div class="navbar-dropdown">
-                <a class="navbar-item" href="#">
-                  Action
-                </a>
-                <a class="navbar-item" href="#">
-                  Drama
-                </a>
-                <a class="navbar-item" href="#">
-                  Comedy
-                </a>
-                <hr class="navbar-divider">
-                <a class="navbar-item" href="#">
-                  Report an issue
-                </a>
-              </div>
-            </div>
-            <a class="navbar-item" href="./film_page.html">
-              Random movie
-            </a>
-          </div>
-
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <div class="buttons">
-                <a class="button is-light" href="./signup.html">
-                  <strong>Sign up</strong>
-                </a>
-                <a class="button is-light" href="./login.html">
-                  Log in
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-
-      <div class="container mt-4 p-2 " >
-        <h2 class="title pl-6">Snatch.</h2>
-        <div class="columns">
-            <div class="column is-4">
-                <img src="./img/snatch.jpg" alt="">
-            </div>
-            <div class="column ">
-        <div class="content has-text-white">
-            <h3 ><strong>Genre:</strong> crime, comedy, action</h3>
-            <p><strong>Description:</strong> Illegal boxing promoter Turkish (Jason Statham) convinces gangster Brick Top (Alan Ford) to offer bets on bare-knuckle boxer Mickey (Brad Pitt) at his bookie business. When Mickey does not throw his first fight as agreed, an infuriated Brick Top demands another match. Meanwhile, gangster Frankie Four Fingers (Benicio del Toro) comes to place a bet for a friend with Brick Top's bookies, as multiple criminals converge on a stolen diamond that Frankie has come to London to sell.</p>
-            <p><strong>Rating:</strong>R (Some Nudity|Language|Strong Violence)</p>
-            <p><strong> Language:</strong> English</p>
-
-           <p> <strong>Director:</strong> Guy Ritchie</p>
-
-           <p> <strong>Producer:</strong> Matthew Vaughn</p>
-
-           <p> <strong>Writer:</strong> Guy Ritchie</p>
-
-           <p> <strong>Release Date (Theaters):</strong> Jan 19, 2001  Wide</p>
-
-           <p> <strong>Release Date (Streaming):</strong> May 6, 2003</p>
-        </div>
-
-            </div>
+{% include "inopolis/components/navbar.html" %}
 
 
 
-        </div>
+<div class="container mt-4 p-2 " >
+  <h2 class="title pl-6">Snatch.</h2>
+  <div class="columns">
+      <div class="column is-4">
+          <img src="./img/snatch.jpg" alt="">
+      </div>
+      <div class="column ">
+  <div class="content has-text-white">
+      <h3 ><strong>Genre:</strong> crime, comedy, action</h3>
+      <p><strong>Description:</strong> Illegal boxing promoter Turkish (Jason Statham) convinces gangster Brick Top (Alan Ford) to offer bets on bare-knuckle boxer Mickey (Brad Pitt) at his bookie business. When Mickey does not throw his first fight as agreed, an infuriated Brick Top demands another match. Meanwhile, gangster Frankie Four Fingers (Benicio del Toro) comes to place a bet for a friend with Brick Top's bookies, as multiple criminals converge on a stolen diamond that Frankie has come to London to sell.</p>
+      <p><strong>Rating:</strong>R (Some Nudity|Language|Strong Violence)</p>
+      <p><strong> Language:</strong> English</p>
 
-        <hr>
+     <p> <strong>Director:</strong> Guy Ritchie</p>
 
+     <p> <strong>Producer:</strong> Matthew Vaughn</p>
 
-            <video controls name="media" class="my_video">
-                <source src="./video/snatch.mp4"  type='video/mp4;'/>
-              </video>
+     <p> <strong>Writer:</strong> Guy Ritchie</p>
 
-              <div class="rating-area">
-                <input type="radio" id="star-5" name="rating" value="5">
-                <label for="star-5" title="Оценка «5»"></label>
-                <input type="radio" id="star-4" name="rating" value="4">
-                <label for="star-4" title="Оценка «4»"></label>
-                <input type="radio" id="star-3" name="rating" value="3">
-                <label for="star-3" title="Оценка «3»"></label>
-                <input type="radio" id="star-2" name="rating" value="2">
-                <label for="star-2" title="Оценка «2»"></label>
-                <input type="radio" id="star-1" name="rating" value="1">
-                <label for="star-1" title="Оценка «1»"></label>
-            </div>
+     <p> <strong>Release Date (Theaters):</strong> Jan 19, 2001  Wide</p>
 
-              <hr>
-              <div class="content has-text-white">
-                <h2>Comments</h2>
-
-              <div class="columns">
-                <div class="column ">
-                    <figure class="image is-128x128">
-                        <img src="./img/profile_pic.jpeg" alt="">
-                        <p>User nickname</p>
-                    </figure>
-
-
-                </div>
-                <div class="column is-11">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>
-                    <a href="#" class="link has-text-white"><img src="./img/svg/message-circle-dots-svgrepo-com.svg" alt=""><strong>Reply</strong></a>
-
-                </div>
-              </div>
-
-              <div class="columns">
-                <div class="column ">
-                    <figure class="image is-128x128">
-                        <img src="./img/profile_pic.jpeg" alt="">
-                        <p>User nickname</p>
-                    </figure>
-
-
-                </div>
-                <div class="column is-11">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>
-                    <a href="#" class="link has-text-white"><img src="./img/svg/message-circle-dots-svgrepo-com.svg" alt=""><strong>Reply</strong></a>
-
-                </div>
-              </div>
-
-              <div class="columns">
-                <div class="column ">
-                    <figure class="image is-128x128">
-                        <img src="./img/profile_pic.jpeg" alt="">
-                        <p>User nickname</p>
-                    </figure>
-
-
-                </div>
-                <div class="column is-11">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>
-                    <a href="#" class="link has-text-white"><img src="./img/svg/message-circle-dots-svgrepo-com.svg" alt=""><strong>Reply</strong></a>
-
-                </div>
-              </div>
-
-            </div>
-
-
+     <p> <strong>Release Date (Streaming):</strong> May 6, 2003</p>
+  </div>
 
       </div>
-      <hr>
-
-<footer class="footer my_footer">
-    <div class="content has-text-centered">
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil doloribus facilis id libero placeat quasi ratione velit officia mollitia. Aut unde dicta incidunt temporibus nobis? Architecto ducimus minima delectus nesciunt nihil ex sapiente libero ab.</p>
-        <p>Moscow 2023</p>
-    </div>
-</footer>
 
 
 
+  </div>
+
+  <hr>
+
+
+      <video controls name="media" class="my_video">
+          <source src="./video/snatch.mp4"  type='video/mp4;'/>
+        </video>
+
+        <div class="rating-area">
+          <input type="radio" id="star-5" name="rating" value="5">
+          <label for="star-5" title="Оценка «5»"></label>
+          <input type="radio" id="star-4" name="rating" value="4">
+          <label for="star-4" title="Оценка «4»"></label>
+          <input type="radio" id="star-3" name="rating" value="3">
+          <label for="star-3" title="Оценка «3»"></label>
+          <input type="radio" id="star-2" name="rating" value="2">
+          <label for="star-2" title="Оценка «2»"></label>
+          <input type="radio" id="star-1" name="rating" value="1">
+          <label for="star-1" title="Оценка «1»"></label>
+      </div>
+
+        <hr>
+        <div class="content has-text-white">
+          <h2>Comments</h2>
+
+        <div class="columns">
+          <div class="column ">
+              <figure class="image is-128x128">
+                  <img src="./img/profile_pic.jpeg" alt="">
+                  <p>User nickname</p>
+              </figure>
+
+
+          </div>
+          <div class="column is-11">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>
+              <a href="#" class="link has-text-white"><img src="./img/svg/message-circle-dots-svgrepo-com.svg" alt=""><strong>Reply</strong></a>
+
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column ">
+              <figure class="image is-128x128">
+                  <img src="./img/profile_pic.jpeg" alt="">
+                  <p>User nickname</p>
+              </figure>
+
+
+          </div>
+          <div class="column is-11">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>
+              <a href="#" class="link has-text-white"><img src="./img/svg/message-circle-dots-svgrepo-com.svg" alt=""><strong>Reply</strong></a>
+
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column ">
+              <figure class="image is-128x128">
+                  <img src="./img/profile_pic.jpeg" alt="">
+                  <p>User nickname</p>
+              </figure>
+
+
+          </div>
+          <div class="column is-11">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>
+              <a href="#" class="link has-text-white"><img src="./img/svg/message-circle-dots-svgrepo-com.svg" alt=""><strong>Reply</strong></a>
+
+          </div>
+        </div>
+
+      </div>
 
 
 
-<script src="./js/navbarMenu.js"></script>
+</div>
 
-</body>
-</html>
+
+
+      {% endblock %}
+
+
+
+
