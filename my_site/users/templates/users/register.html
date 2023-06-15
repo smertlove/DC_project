@@ -1,34 +1,20 @@
+{% extends "inopolis/base.html" %}
 {% load static %}
 {% load crispy_forms_tags %}
-<!--<!DOCTYPE html>-->
-<html>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+{% block "content" %}
+<section class="hero is-fullheight has-text-centered">
+  <div class="hero-body">
+    <div class="login">
+        <figure >
+           <img src="{% static 'inopolis/img/logo.png' %}" class="login_img" alt="" >
+        </figure>
+        <br>
+        <form method="POST">
 
-    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/bulma.min.css' %}">
-    <link type="text/css" rel="stylesheet" href="{% static 'inopolis/css/form_style.css' %}">
-<!--    <link rel="stylesheet" href="./css/bulma.min.css">-->
-<!--    <link rel="stylesheet" href="./css/form_style.css">-->
-</head>
+            {% csrf_token %}
 
-  <body>
-
-    <section class="hero is-fullheight has-text-centered">
-      <div class="hero-body">
-        <div class="login">
-            <figure >
-               <img src="{% static 'inopolis/img/logo.png' %}" class="login_img" alt="" >
-            </figure>
-            <br>
-            <form method="POST">
-
-                {% csrf_token %}
-
-                {{ form|crispy }}
+            {{ form|crispy }}
 
 
 
@@ -80,18 +66,17 @@
 <!--    </div>-->
 
 <!--            <br />-->
-            <button class="button is-block is-fullwidth is-light is-medium is-rounded q " type="submit">Регистрация</button>
+        <button class="button is-block is-fullwidth is-light is-medium is-rounded q " type="submit">Регистрация</button>
 <!--              <a href="./index.html">Sign up now! </a>-->
 <!--            </button>-->
-          </form>
-          <br>
+      </form>
+      <br>
 
-        </div>
-      </div>
-    </section>
-  </body>
+    </div>
+  </div>
+</section>
+    {% endblock %}
 
-</html>
 
 
 
