@@ -1,16 +1,12 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelForm
+
+from .models import Profile
 
 
 class UserRegisterForm(UserCreationForm):
-
-
-    # email = forms.EmailField()
-
-    # birth_year = forms.DateField(
-    #     widget=forms.SelectDateWidget(years=BIRTH_YEAR_CHOICES)
-    # )
 
     class Meta:
         model = User
@@ -21,3 +17,20 @@ class UserRegisterForm(UserCreationForm):
           'password1': forms.PasswordInput(attrs={'class': 'input is-medium'}),
           'password2': forms.PasswordInput(attrs={'class': 'input is-medium'}),
         }
+
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['profile_pic', 'date_of_birth', 'bio', 'instagram']
+
+
+# class EditProfileForm(UserChangeForm):
+#     email = forms.EmailField(widget=forms.EmailInput)
+#     first_name = forms.CharField(max_length=40)
+#     last_name = forms.CharField(max_length=40)
+#
+#     class Meta:
+#         model = User
+#         fields = ['username', 'first_name', 'last_name', 'email']
+
