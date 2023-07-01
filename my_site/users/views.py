@@ -39,7 +39,7 @@ class CreateProfilePageView(CreateView):
     model = Profile
 
     template_name = 'users/create_profile.html'
-    fields = ['profile_pic','date_of_birth','email', 'bio', 'instagram']
+    fields = ['profile_pic','date_of_birth', 'bio', 'instagram']
 
     def form_valid(self, form):
         form.instance.user = self.request.user
