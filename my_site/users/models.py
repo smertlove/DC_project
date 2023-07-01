@@ -9,6 +9,7 @@ class Profile(models.Model):
     profile_pic = models.ImageField(null=True, blank=True, upload_to="avatarka/")
     instagram = models.CharField(max_length=50, null=True, blank=True)
     date_of_birth = models.DateField(default=datetime.date.today())  #input_formats=['%d/%m/%Y'],
+    # email = models.CharField(max_length=50, on_delete=)
     def __str__(self):
         return str(self.user)
 

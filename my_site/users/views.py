@@ -9,18 +9,6 @@ from django.urls import reverse_lazy
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
-def register(request):
-    if request.method == 'POST':
-        form = UserRegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Ваш аккаунт создан можете войти на сайт!')
-            return redirect('login')    #blog-home
-    else:
-        form = UserRegisterForm()
-    return render(request, 'users/register.html', {'form': form})
-
 
 class ShowProfilePageView(DetailView):
     model = Profile
@@ -46,6 +34,26 @@ class CreateProfilePageView(CreateView):
         return super().form_valid(form)
 
     success_url = reverse_lazy('index')
+
+
+# class CreateProfileRegister(CreateView):
+
+
+
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            print(username)
+            messages.success(request, f'Ваш аккаунт создан можете войти на сайт!')
+            return redirect('login')    #blog-home
+    else:
+        form = UserRegisterForm()
+    return render(request, 'users/register.html', {'form': form})
+
 
 
 # def edit(request):
