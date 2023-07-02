@@ -34,8 +34,6 @@ class ProfileForm(ModelForm):
 
 
 
-
-
 class UserLoginForm(AuthenticationForm):
     def __init__(self, *args, **kwargs):
         super(UserLoginForm, self).__init__(*args, **kwargs)
