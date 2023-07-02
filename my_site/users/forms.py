@@ -12,11 +12,11 @@ class UserRegisterForm(UserCreationForm):
     #  FIXME: Почини confirm_password
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']#, 'confirm_password']
+        fields = ['username', 'email', 'password1', 'password2']
         widgets = {
           'username': forms.TextInput(attrs={'class': 'input is-medium'}),
           'email': forms.EmailInput(attrs={'class': 'input is-medium'}),
-          'password': forms.PasswordInput(attrs={'class': 'input is-medium'}),
+          'password1': forms.PasswordInput(attrs={'class': 'input is-medium'}),
           'confirm_password': forms.PasswordInput(attrs={'class': 'input is-medium'}),
         }
 
