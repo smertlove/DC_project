@@ -13,33 +13,29 @@
             <form method="POST">
                 {% csrf_token %}
 
-                {{ form|crispy }}
+           <div class="field">
+               <label class="label has-text-white">Login or email</label>
+             <div class="control">
+              {{ form.username|as_crispy_field }}
+               <!-- <input class="input is-medium " type="text" placeholder="example@email.com" autocomplete="username" required /> -->
+             </div>
+           </div>
+           <div class="field">
+               <label class="label has-text-white">Password</label>
+             <div class="control">
+              {{ form.password|as_crispy_field }}
+               <!-- <input class="input is-medium " type="password" placeholder="**********" autocomplete="current-password" required /> -->
+             </div>
+           </div>
+           <br />
 
-<!--            <div class="field">-->
-<!--                <label class="label has-text-white">Login or email</label>-->
-<!--              <div class="control">-->
-<!--                <input class="input is-medium " type="text" placeholder="example@email.com" autocomplete="username" required />-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <div class="field">-->
-<!--                <label class="label has-text-white">Password</label>-->
-<!--              <div class="control">-->
-<!--                <input class="input is-medium " type="password" placeholder="**********" autocomplete="current-password" required />-->
-<!--              </div>-->
-<!--            </div>-->
-<!--            <br />-->
-
-            <button class="button is-block is-fullwidth is-light is-medium is-rounded q " type="submit">Войти</button>
+            <button class="button is-block is-fullwidth is-light is-medium is-rounded q " type="submit">login</button>
 <!--              <a href="./index.html">login</a>-->
 <!--            </button>-->
 
           </form>
           <br>
           <nav class="level">
-              <div class="level-item has-text-centered">
-              <div>
-                Нужен аккаунт?<a href="{% url 'register' %}" class="is-link has-text-white">Регистрация</a>
-              </div>
             <div class="level-item has-text-centered">
               <div>
                 <a href="#" class="is-link has-text-white">Forgot Password?</a>
@@ -47,7 +43,7 @@
             </div>
             <div class="level-item has-text-centered">
               <div>
-                <a href="./signup.html" class="is-link has-text-white">Create an Account</a>
+                <a href="{% url 'register' %}" class="is-link has-text-white">Create an Account</a>
               </div>
             </div>
           </nav>

@@ -12,6 +12,8 @@ from django.urls import reverse_lazy
 from .models import Profile
 from .forms import UserRegisterForm, ProfileForm
 
+
+
 class ShowProfilePageView(DetailView):
     model = Profile
     template_name = 'users/user_profile.html'

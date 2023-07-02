@@ -16,14 +16,14 @@
            <div class="field">
                <label class="label has-text-white">Username</label>
              <div class="control">
-              {{ form.username|as_crispy_field }}
+              {{ form.username }}
               </div>
             </div>
 
            <div class="field">
              <label class="label has-text-white">Email</label>
            <div class="control">
-            {{ form.email|as_crispy_field }}
+            {{ form.email}}
            </div>
          </div>
 
@@ -37,14 +37,14 @@
        <div class="field">
          <label class="label has-text-white">Password</label>
        <div class="control">
-        {{ form.password1|as_crispy_field }}
+        {{ form.password}}
        </div>
      </div>
 
      <div class="field">
        <label class="label has-text-white">Confirm password</label>
      <div class="control">
-      {{ form.password2|as_crispy_field }}
+      {{ form.confirm_password}}
      </div>
    </div>
 
@@ -57,10 +57,8 @@
 <!--      </div>-->
 <!--    </div>-->
 
-<!--            <br />-->
-        <button class="button is-block is-fullwidth is-light is-medium is-rounded q " type="submit">Регистрация</button>
-<!--              <a href="./index.html">Sign up now! </a>-->
-<!--            </button>-->
+           <br />
+        <button class="button is-block is-fullwidth is-light is-medium is-rounded q " type="submit">Sign up now!</button>
       </form>
       <br>
 

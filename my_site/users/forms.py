@@ -9,6 +9,47 @@ from .models import Profile
 
 class UserRegisterForm(UserCreationForm):
 
+    username = forms.CharField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "example@email.com",
+                "class": "input is-medium"
+            }
+        )
+    )
+
+    email = forms.EmailField(
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "example@email.com",
+                "class": "input is-medium"
+            }
+        )
+    )
+
+    password = forms.CharField(
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "************",
+                "class": "input is-medium"
+            }
+        )
+    )
+
+
+    confirm_password = forms.CharField(
+        required=True,
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "************",
+                "class": "input is-medium"
+            }
+        )
+    )
+
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
