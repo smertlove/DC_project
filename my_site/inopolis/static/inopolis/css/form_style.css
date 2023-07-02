@@ -35,3 +35,7 @@
   .login_img {
     width: 60%;
   }
+
+  .important-white {
+    color: #ffffff !important;
+  }
