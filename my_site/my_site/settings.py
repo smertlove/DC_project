@@ -129,6 +129,16 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = ("bulma",)
 CRISPY_TEMPLATE_PACK = "bulma"
+CRISPY_CLASS_CONVERTERS = {
+    'textinput': "input is-medium",
+    'urlinput': "input is-medium",
+    'numberinput': "input is-medium",
+    'emailinput': "input is-medium",
+    'dateinput': "input is-medium",
+    'textarea': "input is-medium",
+    'passwordinput': "input is-medium",
+    'select': "input is-medium",
+}
 
 LOGIN_REDIRECT_URL = 'index'   #blog-home
 LOGIN_URL = 'login'

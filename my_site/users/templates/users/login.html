@@ -10,28 +10,16 @@
                 <img src="{% static 'inopolis/img/logo.png' %}" class="login_img" alt="" >
             </figure>
             <br>
+
             <form method="POST">
                 {% csrf_token %}
+                {{form|crispy}}
 
-           <div class="field">
-               <label class="label has-text-white">Login or email</label>
-             <div class="control">
-              {{ form.username}}
-               <!-- <input class="input is-medium " type="text" placeholder="example@email.com" autocomplete="username" required /> -->
-             </div>
-           </div>
-           <div class="field">
-               <label class="label has-text-white">Password</label>
-             <div class="control">
-              {{ form.password}}
-               <!-- <input class="input is-medium " type="password" placeholder="**********" autocomplete="current-password" required /> -->
-             </div>
-           </div>
+
            <br />
 
+
             <button class="button is-block is-fullwidth is-light is-medium is-rounded q " type="submit">login</button>
-<!--              <a href="./index.html">login</a>-->
-<!--            </button>-->
 
           </form>
           <br>

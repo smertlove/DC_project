@@ -9,16 +9,20 @@ from .models import Profile
 
 class UserRegisterForm(UserCreationForm):
 
-    #  FIXME: Почини confirm_password
+
+
     class Meta:
         model = User
-        fields = ['username', 'email', 'password']#, 'confirm_password']
-        widgets = {
-          'username': forms.TextInput(attrs={'class': 'input is-medium'}),
-          'email': forms.EmailInput(attrs={'class': 'input is-medium'}),
-          'password': forms.PasswordInput(attrs={'class': 'input is-medium'}),
-          'confirm_password': forms.PasswordInput(attrs={'class': 'input is-medium'}),
-        }
+        fields = ['username', 'email', 'password1', 'password2']
+
+
+
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs):
+    #     self.fields['username'] .widget.attrs['class'] = 'Username'
+    #     self.fields['email']    .widget.attrs['class'] = 'Email'
+    #     self.fields['password1'].widget.attrs['class'] = 'Password'
+    #     self.fields['password2'].widget.attrs['class'] = 'Confirm Password'
 
 
 
@@ -29,8 +33,6 @@ class ProfileForm(ModelForm):
     class Meta:
         model = Profile
         fields = ['profile_pic', 'date_of_birth', 'bio', 'instagram']
-
-
 
 
 

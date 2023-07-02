@@ -46,14 +46,19 @@ class CreateProfilePageView(CreateView):
 
 
 def register(request):
+    print("1")
     if request.method == 'POST':
+        print(2)
         form = UserRegisterForm(request.POST)
         if form.is_valid():
+            print(3)
             form.save()
             username = form.cleaned_data.get('username')
             print(username)
             messages.success(request, f'Ваш аккаунт создан можете войти на сайт!')
             return redirect('login')    #blog-home
+        else:
+            print(form.errors)
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
