@@ -44,8 +44,8 @@
         </a>
         <div class="navbar-item">
           <div class="field">
-            <input id="switch" type="checkbox" name="switchSmall" class="switch ">
-            <label for="switch">
+            <input  type="checkbox" name="switchSmall" class="switch " id="ColorThemeSwitch">
+            <label for="ColorThemeSwitch">
               <img src="{% static 'inopolis/img/svg/sun-svgrepo-com.svg' %}"  alt="SUN"  class="" id="toggle-sun-id"  >
               <img src="{% static 'inopolis/img/svg/moon-svgrepo-com.svg' %}" alt="MOON" class="is-hidden"  id="toggle-moon-id" >
             </label>
@@ -76,3 +76,4 @@
   </nav>
 
   <script src="{% static 'inopolis/js/navbarMenu.js' %}"></script>
+  <script src="{% static 'inopolis/js/ColorThemeSwitch.js' %}"></script>
