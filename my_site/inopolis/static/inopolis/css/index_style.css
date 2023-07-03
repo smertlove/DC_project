@@ -1,5 +1,9 @@
-body {
-    background: #000;
+.body-black {
+    background: #000000;
+  }
+
+  .body-white {
+    background: #fafafa;
   }
 
 
@@ -9,17 +13,24 @@ body {
     height: auto;
 }
 
-.all-text-white > p, h3, h1, h2 {
-    color: #ffffff !important;
+.all-text-white  p, .all-text-white h3, .all-text-white h1, .all-text-white h2, .all-text-white strong {
+    color: #ffffff ;
 }
 
-strong {
-    color: #ffffff;
+.all-text-black  p, .all-text-black h3, .all-text-black h1, .all-text-black h2, .all-text-black strong {
+    color: #000000 ;
 }
 
-.my_footer {
+
+
+.my_footer-black {
     background: #000;
     color: #5c5b5b;
+}
+
+.my_footer-white {
+    background: #fafafa;
+    color: #4a4a4a;
 }
 
 
