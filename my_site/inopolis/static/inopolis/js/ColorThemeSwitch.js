@@ -24,6 +24,17 @@ function setCookie(cname, cvalue, exdays) {
     return "";
   }
 
+
+
+
+
+
+
+
+
+
+
+
 // from -- CSS class, to -- CSS class
 function toggleColorTheme(from, to) {
 
@@ -47,47 +58,63 @@ function switchVisibility (elem1, elem2) {
 }
 
 
-var colorSwitch = document.getElementById("ColorThemeSwitch");
-var mainFrom = "is-dark";
-var mainTo = "is-light";
-var bodyFrom = "body-black";
-var bodyTo = "body-white";
-var footerFrom = "my_footer-black";
-var footerTo = "my_footer-white";
-var textFrom = "all-text-white";
-var textTo = "all-text-black";
+var darkTheme = {
+    main: "is-dark",
+    body: "body-black",
+    footer:"my_footer-black",
+    text: "all-text-white",
+    SVG: document.getElementById("toggle-moon-id")
+}
 
-var currentSVG = document.getElementById("toggle-moon-id");
-var hiddenSVG = document.getElementById("toggle-sun-id");
+var lightTheme = {
+    main: "is-light",
+    body: "body-white",
+    footer:"my_footer-white",
+    text: "all-text-black",
+    SVG: document.getElementById("toggle-sun-id")
+}
+
+var colorSwitch = document.getElementById("ColorThemeSwitch");
+// var mainFrom = "is-dark";
+// var mainTo = "is-light";
+// var bodyFrom = "body-black";
+// var bodyTo = "body-white";
+// var footerFrom = "my_footer-black";
+// var footerTo = "my_footer-white";
+// var textFrom = "all-text-white";
+// var textTo = "all-text-black";
+
+// var currentSVG = document.getElementById("toggle-moon-id");
+// var hiddenSVG = document.getElementById("toggle-sun-id");
 
 
 colorSwitch.onclick = function() {
 
 
-    switchVisibility(currentSVG, hiddenSVG);
-    let temp = currentSVG;
-    currentSVG = hiddenSVG;
-    hiddenSVG = temp;
+    // switchVisibility(currentSVG, hiddenSVG);
+    // let temp = currentSVG;
+    // currentSVG = hiddenSVG;
+    // hiddenSVG = temp;
 
-    toggleColorTheme(mainFrom, mainTo);
-    temp = mainFrom;
-    mainFrom = mainTo;
-    mainTo = temp;
+    // toggleColorTheme(mainFrom, mainTo);
+    // temp = mainFrom;
+    // mainFrom = mainTo;
+    // mainTo = temp;
 
-    toggleColorTheme(bodyFrom, bodyTo)
-    temp = bodyFrom;
-    bodyFrom = bodyTo;
-    bodyTo = temp;
+    // toggleColorTheme(bodyFrom, bodyTo)
+    // temp = bodyFrom;
+    // bodyFrom = bodyTo;
+    // bodyTo = temp;
 
-    toggleColorTheme(footerFrom, footerTo)
-    temp = footerFrom;
-    footerFrom = footerTo;
-    footerTo = temp;
+    // toggleColorTheme(footerFrom, footerTo)
+    // temp = footerFrom;
+    // footerFrom = footerTo;
+    // footerTo = temp;
 
-    toggleColorTheme(textFrom, textTo)
-    temp = textFrom;
-    textFrom = textTo;
-    textTo = temp;
+    // toggleColorTheme(textFrom, textTo)
+    // temp = textFrom;
+    // textFrom = textTo;
+    // textTo = temp;
 
 
 }
