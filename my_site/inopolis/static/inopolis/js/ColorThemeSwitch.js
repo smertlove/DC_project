@@ -26,15 +26,6 @@ function setCookie(cname, cvalue, exdays) {
 
 
 
-
-
-
-
-
-
-
-
-
 // from -- CSS class, to -- CSS class
 function toggleColorTheme(from, to) {
 
@@ -74,47 +65,45 @@ var lightTheme = {
     SVG: document.getElementById("toggle-sun-id")
 }
 
-var colorSwitch = document.getElementById("ColorThemeSwitch");
-// var mainFrom = "is-dark";
-// var mainTo = "is-light";
-// var bodyFrom = "body-black";
-// var bodyTo = "body-white";
-// var footerFrom = "my_footer-black";
-// var footerTo = "my_footer-white";
-// var textFrom = "all-text-white";
-// var textTo = "all-text-black";
+var themeFromCookie = getCookie("color_theme");
+var currentTheme = themeFromCookie == "dark" ? darkTheme : lightTheme;
+var themeForChange = themeFromCookie == "dark" ? lightTheme : darkTheme;
 
-// var currentSVG = document.getElementById("toggle-moon-id");
-// var hiddenSVG = document.getElementById("toggle-sun-id");
+var colorSwitch = document.getElementById("ColorThemeSwitch");
+
 
 
 colorSwitch.onclick = function() {
 
+    for (var [key, value] of Object.entries(currentTheme)) {
+        if (key == "SVG") {
+            switchVisibility(value, themeForChange[key]);
+        } else {
+            toggleColorTheme(value, themeForChange[key]);
+        }
+      }
+      let temp = currentTheme;
+      currentTheme = themeForChange;
+      themeForChange = temp;
 
-    // switchVisibility(currentSVG, hiddenSVG);
-    // let temp = currentSVG;
-    // currentSVG = hiddenSVG;
-    // hiddenSVG = temp;
+      setCookie("color_theme", themeFromCookie == "dark" ? "light" : "dark", 2);
+      themeFromCookie = themeFromCookie == "dark" ? "light" : "dark";
 
-    // toggleColorTheme(mainFrom, mainTo);
-    // temp = mainFrom;
-    // mainFrom = mainTo;
-    // mainTo = temp;
-
-    // toggleColorTheme(bodyFrom, bodyTo)
-    // temp = bodyFrom;
-    // bodyFrom = bodyTo;
-    // bodyTo = temp;
-
-    // toggleColorTheme(footerFrom, footerTo)
-    // temp = footerFrom;
-    // footerFrom = footerTo;
-    // footerTo = temp;
-
-    // toggleColorTheme(textFrom, textTo)
-    // temp = textFrom;
-    // textFrom = textTo;
-    // textTo = temp;
-
+      console.log(getCookie("color_theme"));
 
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (getCookie("color_theme") == "light") {
+        let temp = currentTheme;
+        currentTheme = themeForChange;
+        themeForChange = temp;
+
+        colorSwitch.click();
+        setCookie("color_theme", "light" , 2);
+        themeFromCookie = "light";
+    }
+
+});
+
+
