@@ -18,10 +18,6 @@
           Explore films
         </a>
 
-
-
-
-
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link" href="#">
             Categories
@@ -46,17 +42,26 @@
         <a class="navbar-item" href="./film_page.html">
           Random movie
         </a>
+        <div class="navbar-item">
+          <div class="field">
+            <input  type="checkbox" name="switchSmall" class="switch " id="ColorThemeSwitch">
+            <label for="ColorThemeSwitch">
+              <img src="{% static 'inopolis/img/svg/sun-svgrepo-com.svg' %}"  alt="SUN"  class="" id="toggle-sun-id"  >
+              <img src="{% static 'inopolis/img/svg/moon-svgrepo-com.svg' %}" alt="MOON" class="is-hidden"  id="toggle-moon-id" >
+            </label>
+          </div>
+        </div>
       </div>
 
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
             {% if user.is_authenticated %}
-<!--                {% if user.profile.id %}-->
+                {% if user.profile.id %}
                 <a class="button is-light" href="{% url 'user_profile' user.id %}">Profile</a>
-<!--                {% else %}-->
-<!--                <a class="button is-light" href="{% url 'create_user_profile'  %}">CreateProfile</a>-->
-<!--                {% endif %}-->
+                {% else %}
+                <a class="button is-light" href="{% url 'create_user_profile'  %}">CreateProfile</a>
+                {% endif %}
                 <a class="button is-light" href="{% url 'logout' %}">Exit</a>
             {% else %}
                 <a class="button is-light" href="{% url 'register' %}">
@@ -71,3 +76,4 @@
   </nav>
 
   <script src="{% static 'inopolis/js/navbarMenu.js' %}"></script>
+  <script src="{% static 'inopolis/js/ColorThemeSwitch.js' %}"></script>
