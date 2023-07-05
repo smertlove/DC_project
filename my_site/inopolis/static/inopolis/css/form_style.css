@@ -8,12 +8,8 @@
     --shadowLight: #EFF5FE;
   }
   
-  .body-black {
+  body {
     background: #000000;
-  }
-
-  .body-white {
-    background: #ffffff;
   }
   
   .hero-body {

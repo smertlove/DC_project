@@ -1,3 +1,6 @@
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
+from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
 
 from django.contrib import messages
@@ -10,8 +13,7 @@ from django.views.generic.edit import CreateView, UpdateView
 from django.urls import reverse_lazy
 
 from .models import Profile
-from .forms import UserRegisterForm, ProfileForm
-
+from .forms import *
 
 
 class ShowProfilePageView(DetailView):
@@ -27,34 +29,18 @@ class ShowProfilePageView(DetailView):
 
 
 
-class CreateProfilePageView(CreateView):
-    model = Profile
-
-    template_name = 'users/create_profile.html'
-    fields = ['profile_pic','date_of_birth', 'bio', 'instagram']
-
-    def form_valid(self, form):
-        form.instance.user = self.request.user
-        return super().form_valid(form)
-
-    success_url = reverse_lazy('index')
-
-
-# class CreateProfileRegister(CreateView):
-
-
-
-
 def register(request):
-    print("1")
     if request.method == 'POST':
-        print(2)
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            print(3)
             form.save()
-            username = form.cleaned_data.get('username')
-            print(username)
+            dict_profile = {
+                "user_id": User.objects.get(username=form.cleaned_data.get('username')).id,}
+            #     "username": form.cleaned_data.get('username'),
+            #     "email": form.cleaned_data.get('email'),
+            # }
+            user_profile = Profile(user_id=dict_profile.get("user_id")) #, username=dict_profile.get("username"), email=dict_profile.get("email"))
+            user_profile.save()
             messages.success(request, f'Ваш аккаунт создан можете войти на сайт!')
             return redirect('login')    #blog-home
         else:
@@ -64,30 +50,118 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 
+@login_required
+@transaction.atomic
+def edit_profile(request):
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, ('Ваш профиль был успешно обновлен!'))
+            return redirect('index')
+        else:
+            messages.error(request, ('Пожалуйста, исправьте ошибки.'))
+    else:
+        user_form = UserForm(instance=request.user)
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'users/edit_profile.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
+    })
+
+def edit_pass(request):
+    def change_password(request):
+        if request.method == 'POST':
+            form = PasswordChangeForm(request.user, request.POST)
+            if form.is_valid():
+                user = form.save()
+                update_session_auth_hash(request, user)  # Important!
+                messages.success(request, 'Your password was successfully updated!')
+                return redirect('change_password')
+            else:
+                messages.error(request, 'Please correct the error below.')
+        else:
+            form = PasswordChangeForm(request.user)
+        return render(request, 'users/edit_pass.html', {
+            'form': form
+        })
+
+
+
+
+
+
+
+
 
 # def edit(request):
 #     return render(request, 'users/edit_profile.html')
 
 
 
-class EditProfilePageView(UpdateView):
-    model = Profile
-    template_name = 'users/edit_profile.html'
-    form_class = ProfileForm
-
-
-    success_url = reverse_lazy('index')
-
-
-# class UserEditView(UpdateView):
-#     form_class = EditProfileForm
+# class EditProfilePageView(UpdateView):
+#     model = Profile
 #     template_name = 'users/edit_profile.html'
-#     success_url = reverse_lazy('tasks')
+#     form_class = ProfileForm#  ProfileUserForm
+#     success_url = reverse_lazy('index')
 #
-#     def get_object(self):
-#         return self.request.user
+#     def get_context_data(self, *args, **kwargs):
+#         users = Profile.objects.all()
+#         context = super(EditProfilePageView, self).get_context_data(*args, **kwargs)
+#         page_user = get_object_or_404(Profile, user_id=self.kwargs['pk'])
+#         context['page_user'] = page_user
+#     #    context['page_user'] = page_user
+#         return context
+    # second_form_class = ProfileForm
+
+    # def get_context_data(self, **kwargs):
+    #     context = super(EditProfilePageView, self).get_context_data(**kwargs)
+    #     context['active_client'] = True
+    #     if 'form' not in context:
+    #         context['form'] = self.form_class(self.request.GET, instance=self.object)
+    #         #context['form'] = self.form_class(self.request.GET)
+    #     if 'form2' not in context:
+    #         context['form2'] = self.second_form_class(self.request.GET, instance=self.object)
+    #         #context['form2'] = self.second_form_class(self.request.GET)
+    #     context['active_client'] = True
+    #     return context
+    #
+    # def post(self, request, *args, **kwargs):
+    #     self.object = self.get_object()
+    #     form = self.form_class(request.POST)
+    #     form2 = self.second_form_class(request.POST)
+    #
+    #     if form.is_valid() and form2.is_valid():
+    #         userdata = form.save(commit=False)
+    #         # used to set the password, but no longer necesarry
+    #         userdata.save()
+    #         employeedata = form2.save(commit=False)
+    #         employeedata.user = userdata
+    #         employeedata.save()
+    #         messages.success(self.request, 'Settings saved successfully')
+    #         return redirect('index')
+    #     else:
+    #         return self.render_to_response(
+    #             self.get_context_data(form=form, form2=form2))
+    #
+    # def get_success_url(self):
+    #     return redirect('index')
+
+    # class CreateProfilePageView(CreateView):
+    #     model = Profile
+    #
+    #     template_name = 'users/create_profile.html'
+    #     fields = ['profile_pic', 'date_of_birth', 'bio', 'instagram']
+    #
+    #     def form_valid(self, form):
+    #         for i in form.instance:
+    #             print(i)
+    #         form.instance.user = self.request.user
+    #         return super().form_valid(form)
+    #
+    #     success_url = reverse_lazy('index')
 
 
-# @login_required
-# def profile(request):
-#     return render(request, 'users/profile.html')
+

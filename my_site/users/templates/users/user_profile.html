@@ -17,16 +17,16 @@
     {% else %}
         <img src="{% static 'inopolis/img/pustay.png' %}" height=100 width=100><br><br>
     {% endif %}
-        <p><strong>Date of birth:</strong> {{ profile.date_of_birth }}</p><br><br>
-      <p><strong>Username:</strong> {{ page_user }}</p><br><br>
-        <p><strong>Email:</strong> {{ user.email }}</p><br><br>
-      <p><strong>Bio:</strong> {{ profile.bio }}</p><br><br>
+    <p><strong>Username:</strong> {{ page_user }}</p><br><br>
+        <p><strong>Date of birth:</strong> {{ user.profile.date_of_birth }}</p><br><br>
+      <p><strong>Bio:</strong> {{ user.profile.bio }}</p><br><br>
+    <p><strong>Email:</strong> {{ user.email }}</p><br><br>
       {% if profile.instagram %}
       <p><strong>Instagram:</strong> {{ profile.instagram }}</p><br><br>
       {% endif %}
 
       {% if user.id == profile.user.id %}
-        <a href="{% url 'edit_user_profile' profile.id %}"><button class="button">Edit</button></a>
+        <a href="{% url 'edit_user_profile' %}"><button class="button">Edit</button></a>
       {% endif %}
 
 </body>

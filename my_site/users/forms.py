@@ -9,8 +9,6 @@ from .models import Profile
 
 class UserRegisterForm(UserCreationForm):
 
-
-
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
@@ -27,12 +25,27 @@ class UserRegisterForm(UserCreationForm):
 
 
 
+# class ProfileUserForm(ModelForm):
+#     class Meta:
+#         model = User
+#         fields = ['username', 'password', 'email']
+
+# class ProfileForm(ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ['profile_pic', 'date_of_birth', 'bio', 'instagram']
 
 
-class ProfileForm(ModelForm):
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ('username', 'email')
+
+class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['profile_pic', 'date_of_birth', 'bio', 'instagram']
+        fields = ('profile_pic', 'date_of_birth', 'bio', 'instagram')
+
 
 
 
