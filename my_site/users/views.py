@@ -2,7 +2,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.db import transaction
 from django.shortcuts import render, redirect, get_object_or_404
-
+from django.contrib.auth.views import PasswordChangeView
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -65,19 +65,20 @@ def edit_profile(request):
         'profile_form': profile_form
     })
 
-def edit_pass(request):
+
+def change_password(request):
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
             messages.success(request, 'Your password was successfully updated!')
-            return redirect('change_password')
+            return redirect('index')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
         form = PasswordChangeForm(request.user)
-    return render(request, 'users/edit_pass.html', {
+    return render(request, 'users/password_change.html', {
         'form': form
     })
 

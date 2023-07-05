@@ -12,6 +12,7 @@ urlpatterns = [
     path('user_profile/<int:pk>/', ShowProfilePageView.as_view(), name='user_profile'),
    # path('create_profile_page/', CreateProfilePageView.as_view(), name='create_user_profile'),   #CreateProfilePageView.as_view()
     path('edit_profile_page/', user_views.edit_profile, name='edit_user_profile'),
-    path('edit_pass/', user_views.edit_pass, name='edit_pass'),
+   # path('edit_pass/', user_views.edit_pass, name='edit_pass'),
+    path('password_change/', user_views.change_password, name='password_change'),
 
 ]
