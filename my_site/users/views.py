@@ -34,13 +34,7 @@ def register(request):
         form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
-            dict_profile = {
-                "user_id": User.objects.get(username=form.cleaned_data.get('username')).id,}
-            #     "username": form.cleaned_data.get('username'),
-            #     "email": form.cleaned_data.get('email'),
-            # }
-            user_profile = Profile(user_id=dict_profile.get("user_id")) #, username=dict_profile.get("username"), email=dict_profile.get("email"))
-            user_profile.save()
+            username = form.cleaned_data.get('username')
             messages.success(request, f'Ваш аккаунт создан можете войти на сайт!')
             return redirect('login')    #blog-home
         else:
@@ -72,21 +66,20 @@ def edit_profile(request):
     })
 
 def edit_pass(request):
-    def change_password(request):
-        if request.method == 'POST':
-            form = PasswordChangeForm(request.user, request.POST)
-            if form.is_valid():
-                user = form.save()
-                update_session_auth_hash(request, user)  # Important!
-                messages.success(request, 'Your password was successfully updated!')
-                return redirect('change_password')
-            else:
-                messages.error(request, 'Please correct the error below.')
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important!
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect('change_password')
         else:
-            form = PasswordChangeForm(request.user)
-        return render(request, 'users/edit_pass.html', {
-            'form': form
-        })
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = PasswordChangeForm(request.user)
+    return render(request, 'users/edit_pass.html', {
+        'form': form
+    })
 
 
 
