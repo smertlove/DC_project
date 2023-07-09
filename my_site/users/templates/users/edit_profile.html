@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Edit Profile</title>
-</head>
-<body>
-<div class="header-bar">
-        <h1>Edit Profile</h1>
+{% extends "inopolis/base.html" %}
+{% load static %}
 
-        <a href="{% url 'index' %}">&#8592; Back</a>
 
-    </div>
 
+{% block "content" %}
+
+{% include "inopolis/components/navbar.html" %}
+
+<div class="container pt-6 all-text-white">
+
+    {% if request.user.is_authenticated %}
     <div class="card-body">
         <form method="POST"  enctype="multipart/form-data">
             {% csrf_token %}
@@ -22,7 +20,8 @@
             <br>
             <a href="{% url 'password_change' %}">Хотите изменить пароль?</a>
         </form>
-
     </div>
-</body>
-</html>
+    {% endif %}
+{% endblock %}
+
+
