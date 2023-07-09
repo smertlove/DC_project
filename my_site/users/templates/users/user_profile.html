@@ -1,48 +1,33 @@
-{% extends "inopolis/base.html" %}
 {% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <div class="header-bar">
+        <h1>Profile</h1>
+        <a href="{% url 'index' %}">&#8592; Back</a>
 
-
-
-{% block "content" %}
-
-{% include "inopolis/components/navbar.html" %}
-
-<div class="container pt-6 all-text-white">
-  <div class="columns">
-
-    <div class="column is-2">
-      {% if user.profile.profile_pic %}
-      <img src="{{ profile.profile_pic.url }}" height=100 width=100><br><br>
-      {% else %}
-      <img src="{% static 'inopolis/img/pustay.png' %}" height=100 width=100><br><br>
-      {% endif %}
     </div>
-    <div class="column is-2">
-      <h1 class="is-size-4"> {{ page_user }}</h1>
-      {% if profile.date_of_birth %}
-      <p>{{ user.profile.date_of_birth }}</p>
-      {% endif %}
-      {% if profile.bio  %}
-      <p>{{ user.profile.bio }}</p>
-      {% endif %}
-      <p> {{ user.email }}</p>
+
+
+    {% if user.profile.profile_pic %}
+        <img src="{{ profile.profile_pic.url }}" height=100 width=100><br><br>
+    {% else %}
+        <img src="{% static 'inopolis/img/pustay.png' %}" height=100 width=100><br><br>
+    {% endif %}
+    <p><strong>Username:</strong> {{ page_user }}</p><br><br>
+        <p><strong>Date of birth:</strong> {{ user.profile.date_of_birth }}</p><br><br>
+      <p><strong>Bio:</strong> {{ user.profile.bio }}</p><br><br>
+    <p><strong>Email:</strong> {{ user.email }}</p><br><br>
       {% if profile.instagram %}
       <p><strong>Instagram:</strong> {{ profile.instagram }}</p><br><br>
       {% endif %}
-    </div>
-  </div>
 
+      {% if user.id == profile.user.id %}
+        <a href="{% url 'edit_user_profile' %}"><button class="button">Edit</button></a>
+      {% endif %}
 
-
-  {% if user.id == profile.user.id %}
-  <a href="{% url 'edit_user_profile' %}"><button class="button">Edit</button></a>
-  {% endif %}
-</div>
-
-
-
-{% endblock %}
-
-
-
-
+</body>
+</html>

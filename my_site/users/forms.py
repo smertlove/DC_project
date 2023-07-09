@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, UserChangeForm
 
 from .models import Profile
 
@@ -35,16 +35,24 @@ class UserRegisterForm(UserCreationForm):
 #         model = Profile
 #         fields = ['profile_pic', 'date_of_birth', 'bio', 'instagram']
 
+from django.contrib.auth import get_user_model
+
+
+class ProfileForm(UserChangeForm):
+    class Meta:
+        model = Profile
+        fields = ('profile_pic', 'date_of_birth', 'bio', 'instagram')
+
 
 class UserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'email')
 
-class ProfileForm(forms.ModelForm):
-    class Meta:
-        model = Profile
-        fields = ('profile_pic', 'date_of_birth', 'bio', 'instagram')
+# class ProfileForm(forms.ModelForm):
+#     class Meta:
+#         model = Profile
+#         fields = ('profile_pic', 'date_of_birth', 'bio', 'instagram')
 
 
 

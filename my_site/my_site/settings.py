@@ -143,5 +143,5 @@ CRISPY_CLASS_CONVERTERS = {
 LOGIN_REDIRECT_URL = 'index'   #blog-home
 LOGIN_URL = 'login'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'users/media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'users\media')
 MEDIA_URL = 'media/'
