@@ -37,7 +37,7 @@ class Film(models.Model):
 class Comment(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
-    film = models.ForeignKey("Film", on_delete=models.PROTECT)
+    film = models.ForeignKey(Film, on_delete=models.PROTECT)
     content = models.TextField()
     datetime = models.DateTimeField(auto_now_add=True)
 
