@@ -1,3 +1,4 @@
+import os
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.db import transaction
@@ -48,11 +49,19 @@ def register(request):
 @transaction.atomic
 def edit_profile(request):
     if request.method == 'POST':
+        print(request.FILES)
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
+            if request.FILES.get('profile_pic', None) != None:
+                try:
+                    os.remove(request.user.profile_pic.url)
+                except Exception as e:
+                    print('Exception in removing old profile image: ', e)
+                request.user.profile.profile_pic = request.FILES['profile_pic']
+                request.user.profile.save()
             messages.success(request, ('Ваш профиль был успешно обновлен!'))
             return redirect('index')
         else:
