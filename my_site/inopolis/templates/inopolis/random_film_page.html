@@ -1,0 +1,123 @@
+{% extends "inopolis/base.html" %}
+{% load static %}
+
+
+
+{% block "content" %}
+
+{% include "inopolis/components/navbar.html" %}
+
+
+{% if request.film %}
+<div class="container mt-4 p-2 all-text-white" >
+  <h2 class="title pl-6">{{request.film.title}}</h2>
+  <div class="columns">
+      <div class="column is-4">
+          <img src="{% static 'inopolis/img/snatch.jpg' %}" alt="">
+      </div>
+      <div class="column ">
+  <div class="content">
+      <h3 ><strong>Genre:</strong> {{request.film.genre}}</h3>
+      <p><strong>Description:</strong>{{request.film.descriptions}}</p>
+      <p><strong>Rating:</strong>{{request.film.rating}}</p>
+      <p><strong> Language:</strong>English</p>
+
+     <p> <strong>Director:</strong>{{request.film.director}}</p>
+
+     <p> <strong>Producer:</strong>{{request.film.producer}}</p>
+
+     <p> <strong>Writer:</strong>{{request.film.writer}}</p>
+
+     <p> <strong>Release Date (Theaters):</strong>{{request.film.release_date_theaters}}</p>
+
+     <p> <strong>Release Date (Streaming):</strong>{{request.film.release_date_streaming}}</p>
+  </div>
+
+      </div>
+
+
+
+  </div>
+
+  <hr>
+
+
+      <video controls name="media" class="my_video">
+          <source src="{% static request.film.data %}"  type='video/mp4;'/>
+        </video>
+
+        <div class="rating-area">
+          <input type="radio" id="star-5" name="rating" value="5">
+          <label for="star-5" title="Оценка «5»"></label>
+          <input type="radio" id="star-4" name="rating" value="4">
+          <label for="star-4" title="Оценка «4»"></label>
+          <input type="radio" id="star-3" name="rating" value="3">
+          <label for="star-3" title="Оценка «3»"></label>
+          <input type="radio" id="star-2" name="rating" value="2">
+          <label for="star-2" title="Оценка «2»"></label>
+          <input type="radio" id="star-1" name="rating" value="1">
+          <label for="star-1" title="Оценка «1»"></label>
+      </div>
+
+        <hr>
+        <div class="content has-text-white">
+          <h2>Comments</h2>
+
+        <div class="columns">
+          <div class="column ">
+              <figure class="image is-128x128">
+                  <img src="{% static 'inopolis/img/profile_pic.jpeg' %}" alt="">
+                  <p>User nickname</p>
+              </figure>
+
+
+          </div>
+          <div class="column is-11">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>
+              <a href="#" class="link has-text-white"><img src="{% static 'inopolis/img/svg/message-circle-dots-svgrepo-com.svg' %}" alt=""><strong>Reply</strong></a>
+
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column ">
+              <figure class="image is-128x128">
+                  <img src="{% static 'inopolis/img/profile_pic.jpeg' %}" alt="">
+                  <p>User nickname</p>
+              </figure>
+
+
+          </div>
+          <div class="column is-11">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>
+              <a href="#" class="link has-text-white"><img src="{% static 'inopolis/img/svg/message-circle-dots-svgrepo-com.svg' %}" alt=""><strong>Reply</strong></a>
+
+          </div>
+        </div>
+
+        <div class="columns">
+          <div class="column ">
+              <figure class="image is-128x128">
+                  <img src="{% static 'inopolis/img/profile_pic.jpeg' %}" alt="">
+                  <p>User nickname</p>
+              </figure>
+
+
+          </div>
+          <div class="column is-11">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>
+              <a href="#" class="link has-text-white"><img src="{% static 'inopolis/img/svg/message-circle-dots-svgrepo-com.svg' %}" alt=""><strong>Reply</strong></a>
+
+          </div>
+        </div>
+
+      </div>
+
+
+
+</div>
+{% endif %}
+
+
+
+      {% endblock %}

@@ -28,7 +28,7 @@ class Film(models.Model):
     release_date_theaters = models.DateField()
     release_date_streaming = models.DateField()
 
-    data = models.BinaryField()
+    data = models.ImageField()
 
     def __str__(self) -> str:
         return self.title
