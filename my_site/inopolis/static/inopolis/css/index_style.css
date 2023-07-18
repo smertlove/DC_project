@@ -45,3 +45,31 @@ body {
     margin: 2vh;
     /* border-radius: 2vh; */
 }
+
+
+
+/*  searchbar  */
+#mySuggestions{
+    /* border-radius: 10px; */
+    background-color: #fff;
+    position: absolute;
+    z-index: 10;
+    min-width: 210px;
+    max-width: 210px;
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+
+#mySuggestions > a{
+    text-decoration: none;
+    display: flex;
+    padding: 0px 10px 0px;
+}
+
+
+
+#mySuggestions > a:hover{
+    color: #fff;
+    background-color: #689CD3;
+    transition-duration: 350ms;
+ }

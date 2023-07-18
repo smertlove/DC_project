@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Film, Comment
 from django.contrib import auth
+from django.http import JsonResponse
 import random
 
 def index(request):
@@ -40,3 +41,36 @@ def random_film_page(request):
 def film_page(request, pk):
     film = Film.objects.get(id = pk)
     return render(request, 'inopolis/film_page.html', {'film': film})
+
+
+
+
+
+# ищет совпадения и возвращает список
+def _live_search(pattern):
+    matches = []
+    if len(pattern)>0:
+        matches = list(Film.objects.filter(title__istartswith=pattern))
+    return [
+        {"title": match.title}
+        for match in matches
+    ]
+
+
+# вьюха
+def live_search(request):
+
+    pattern = request.GET.get('pattern')
+    # if request.is_ajax():
+
+    results = []
+    if len(pattern) > 0:
+        results = _live_search(pattern)
+    return JsonResponse({'data': results})
+
+    # я без понятия, что это означало
+    # else:
+    #     return entry(request)
+
+
+

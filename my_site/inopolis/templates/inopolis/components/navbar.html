@@ -53,6 +53,38 @@
         </div>
       </div>
 
+
+
+      <div class="navbar-item">
+
+
+
+
+        <div class="fluid" id="search">
+          <form class="d-flex"  action="{% url 'live-search' %}" id="myForm"> <!-- в action надо написать имя вьюхи!!!!! -->
+
+            <div class="field has-addons">
+              <div class="control">
+                <input class="input is-dark" type="search" placeholder="Search..." id="myInput"  name="word" autocomplete="off">
+              </div>
+              <div class="control">
+                <a class="button is-dark">
+                  Search
+                </a>
+              </div>
+            </div>
+
+
+
+          </form>
+          <div  id="mySuggestions"></div>
+      </div>
+      </div>
+
+
+
+
+
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
@@ -77,3 +109,11 @@
 
   <script src="{% static 'inopolis/js/navbarMenu.js' %}"></script>
   <script src="{% static 'inopolis/js/ColorThemeSwitch.js' %}"></script>
+  <script src="{% static 'inopolis/js/jquery 3.6.0.js' %}"></script>
+  <script src="{% static 'inopolis/js/livesearch.js' %}"></script>
+  <script>
+    $('#myInput').on('keyup', function (){
+      let pattern = this.value;
+      liveSearch("{% url 'live-search' %}",  pattern);
+})
+</script>
