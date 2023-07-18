@@ -27,7 +27,7 @@ class Film(models.Model):
     writer = models.CharField(max_length=64)
     release_date_theaters = models.DateField()
     release_date_streaming = models.DateField()
-
+    picture = models.ImageField(null=True)
     data = models.ImageField()
 
     def __str__(self) -> str:
