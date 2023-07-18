@@ -8,29 +8,29 @@
 {% include "inopolis/components/navbar.html" %}
 
 
-
+{% if request.film %}
 <div class="container mt-4 p-2 all-text-white" >
-  <h2 class="title pl-6">Snatch.</h2>
+  <h2 class="title pl-6">{{request.film.title}}</h2>
   <div class="columns">
       <div class="column is-4">
           <img src="{% static 'inopolis/img/snatch.jpg' %}" alt="">
       </div>
       <div class="column ">
   <div class="content">
-      <h3 ><strong>Genre:</strong> crime, comedy, action</h3>
-      <p><strong>Description:</strong> Illegal boxing promoter Turkish (Jason Statham) convinces gangster Brick Top (Alan Ford) to offer bets on bare-knuckle boxer Mickey (Brad Pitt) at his bookie business. When Mickey does not throw his first fight as agreed, an infuriated Brick Top demands another match. Meanwhile, gangster Frankie Four Fingers (Benicio del Toro) comes to place a bet for a friend with Brick Top's bookies, as multiple criminals converge on a stolen diamond that Frankie has come to London to sell.</p>
-      <p><strong>Rating:</strong>R (Some Nudity|Language|Strong Violence)</p>
-      <p><strong> Language:</strong> English</p>
+      <h3 ><strong>Genre:</strong> {{request.film.genre}}</h3>
+      <p><strong>Description:</strong>{{request.film.descriptions}}</p>
+      <p><strong>Rating:</strong>{{request.film.rating}}</p>
+      <p><strong> Language:</strong>English</p>
 
-     <p> <strong>Director:</strong> Guy Ritchie</p>
+     <p> <strong>Director:</strong>{{request.film.director}}</p>
 
-     <p> <strong>Producer:</strong> Matthew Vaughn</p>
+     <p> <strong>Producer:</strong>{{request.film.producer}}</p>
 
-     <p> <strong>Writer:</strong> Guy Ritchie</p>
+     <p> <strong>Writer:</strong>{{request.film.writer}}</p>
 
-     <p> <strong>Release Date (Theaters):</strong> Jan 19, 2001  Wide</p>
+     <p> <strong>Release Date (Theaters):</strong>{{request.film.release_date_theaters}}</p>
 
-     <p> <strong>Release Date (Streaming):</strong> May 6, 2003</p>
+     <p> <strong>Release Date (Streaming):</strong>{{request.film.release_date_streaming}}</p>
   </div>
 
       </div>
@@ -43,7 +43,7 @@
 
 
       <video controls name="media" class="my_video">
-          <source src="{% static 'inopolis/video/snatch.mp4' %}"  type='video/mp4;'/>
+          <source src="{% static request.film.data %}"  type='video/mp4;'/>
         </video>
 
         <div class="rating-area">
@@ -116,6 +116,7 @@
 
 
 </div>
+{% endif %}
 
 
 
