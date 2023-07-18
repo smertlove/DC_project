@@ -10,107 +10,34 @@
 
 
 
-
+{% for film in films %}
       <div class="container mt-4 pt-1 my_container" >
 
         <div class="container film_card">
             <article class="columns featured">
 
                 <div class="column is-7 ">
-                  <img src="{% static 'inopolis/img/snatch.jpg' %}" alt="">
+                  <img src="{% static film.picture %}" alt="">   <!-- "{% static film.picture %}"-->
                 </div>
                 <div class="column is-5 featured-content va">
                   <div class="content all-text-white">
 
-                    <h2 class="title ">Snatch.</h2>
-                    <h3 ><strong>Genre:</strong> crime, comedy, action</h3>
-                    <p ><strong>Description:</strong> Illegal boxing promoter Turkish (Jason Statham) convinces gangster Brick Top (Alan Ford) to offer bets on bare-knuckle boxer Mickey (Brad Pitt) at his bookie business. When Mickey does not throw his first fight as agreed, an infuriated Brick Top demands another match. Meanwhile, gangster Frankie Four Fingers (Benicio del Toro) comes to place a bet for a friend with Brick Top's bookies, as multiple criminals converge on a stolen diamond that Frankie has come to London to sell.</p>
-                    <p><strong>Rating:</strong>R (Some Nudity|Language|Strong Violence)</p>
+                    <h2 class="title ">{{ film.title }}</h2>
+                    <h3 ><strong>Genre:</strong>{{ film.genre }}</h3>
+                    <p ><strong>Description:</strong>{{ film.description }}</p>
+                    <p><strong>Rating:</strong>{{ film.rating }}</p>
 
 
                     <br>
-                    <a href="{% url 'film_page' %}" class="button is-dark">Read More</a>
+                    <a href="{% url 'film_page' film.id %}" class="button is-dark">Read More</a>
                   </div>
 
                 </div>
               </article>
         </div>
         <hr >
-
-
-        <div class="container film_card">
-          <article class="columns featured">
-
-              <div class="column is-7 ">
-                <img src="{% static 'inopolis/img/featured-image.png' %}" alt="">
-              </div>
-              <div class="column is-5 featured-content va">
-                <div class="content all-text-white">
-
-                  <h2 class="title ">Lorem</h2>
-                  <h3 ><strong>Genre:</strong> Lorem, ipsum, dolor</h3>
-                  <p ><strong>Description:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit autem quos sint eius dolores iure, recusandae modi repellendus atque? Unde quam eos asperiores explicabo expedita architecto, possimus, cum harum necessitatibus fuga aliquid natus. Dignissimos, doloribus odio dolore laboriosam commodi dolorum quasi culpa voluptatum. Iusto.</p>
-                  <p><strong>Rating:</strong> Lorem ipsum dolor sit amet consectetur.</p>
-
-
-                  <br>
-                  <a href="{% url 'film_page' %}" class="button is-light">Read More</a>
-                </div>
-
-              </div>
-            </article>
       </div>
-      <hr><div class="container film_card">
-        <article class="columns featured">
-
-            <div class="column is-7 ">
-              <img src="{% static 'inopolis/img/featured-image.png' %}" alt="">
-            </div>
-            <div class="column is-5 featured-content va">
-              <div class="content all-text-white">
-
-                <h2 class="title ">Lorem</h2>
-                <h3 ><strong>Genre:</strong> Lorem, ipsum, dolor</h3>
-                <p ><strong>Description:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit autem quos sint eius dolores iure, recusandae modi repellendus atque? Unde quam eos asperiores explicabo expedita architecto, possimus, cum harum necessitatibus fuga aliquid natus. Dignissimos, doloribus odio dolore laboriosam commodi dolorum quasi culpa voluptatum. Iusto.</p>
-                <p><strong>Rating:</strong> Lorem ipsum dolor sit amet consectetur.</p>
-
-
-                <br>
-                <a href="{% url 'film_page' %}" class="button is-light">Read More</a>
-              </div>
-
-            </div>
-          </article>
-    </div>
-    <hr><div class="container film_card">
-      <article class="columns featured">
-
-          <div class="column is-7 ">
-            <img src="{% static 'inopolis/img/featured-image.png' %}" alt="">
-          </div>
-          <div class="column is-5 featured-content va">
-            <div class="all-text-white">
-
-              <h2 class="title ">Lorem</h2>
-              <h3 ><strong>Genre:</strong> Lorem, ipsum, dolor</h3>
-              <p ><strong>Description:</strong> Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque impedit autem quos sint eius dolores iure, recusandae modi repellendus atque? Unde quam eos asperiores explicabo expedita architecto, possimus, cum harum necessitatibus fuga aliquid natus. Dignissimos, doloribus odio dolore laboriosam commodi dolorum quasi culpa voluptatum. Iusto.</p>
-              <p><strong>Rating:</strong> Lorem ipsum dolor sit amet consectetur.</p>
-
-
-              <br>
-              <a href="{% url 'film_page' %}" class="button is-light">Read More</a>
-            </div>
-
-          </div>
-        </article>
-  </div>
-
-
-
-
-
-
-      </div>
+{% endfor %}
 
 
       {% endblock %}
