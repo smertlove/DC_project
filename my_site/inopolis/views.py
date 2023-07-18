@@ -9,7 +9,7 @@ def index(request):
     return render(request, 'inopolis/index.html')
 
 
-def film_page(request):
+def random_film_page(request):
     last_id = Film.objects.last().id
     random_id = random.randint(1, last_id)
     obj = Film.objects.get(id = random_id)
@@ -27,4 +27,7 @@ def film_page(request):
         'release_date_streaming': obj.release_date_streaming,
         'data': obj.data
     }
-    return render(request, 'inopolis/random_film_page.html')
+    return render(request, 'inopolis/film_page.html')
+
+def film_page(request):
+    return render(request, 'inopolis/film_page.html')
