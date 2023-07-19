@@ -1,3 +1,4 @@
+
 from django.shortcuts import render, get_object_or_404, redirect
 from .forms import CommentForm
 from .models import Film, Comment, Genre
@@ -61,6 +62,7 @@ def film_page(request, pk):
             'comments': comments,
             'comment_form': comment_form,
         })
+
 
 
 
