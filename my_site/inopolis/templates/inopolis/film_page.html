@@ -1,6 +1,6 @@
 {% extends "inopolis/base.html" %}
 {% load static %}
-
+{% load crispy_forms_tags %}
 
 
 {% block "content" %}
@@ -61,62 +61,46 @@
 
         <hr>
         <div class="content has-text-white">
+            {% if comments %}
           <h2>Comments</h2>
-
+            {% for comment in comments %}
         <div class="columns">
           <div class="column ">
               <figure class="image is-128x128">
+                  {% if comment.user.profile.profile_pic %}
+                    <img src="{{ comment.user.profile.profile_pic.url }}" height=100 width=100>
+                  {% else %}
                   <img src="{% static 'inopolis/img/profile_pic.jpeg' %}" alt="">
-                  <p>User nickname</p>
+                  {% endif %}
+                  <p>{{ comment.user }}</p>
               </figure>
 
 
           </div>
           <div class="column is-11">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>
+              <p>{{ comment.content }}</p>
               <a href="#" class="link has-text-white"><img src="{% static 'inopolis/img/svg/message-circle-dots-svgrepo-com.svg' %}" alt=""><strong>Reply</strong></a>
 
           </div>
         </div>
-
-<!--        <div class="columns">-->
-<!--          <div class="column ">-->
-<!--              <figure class="image is-128x128">-->
-<!--                  <img src="{% static 'inopolis/img/profile_pic.jpeg' %}" alt="">-->
-<!--                  <p>User nickname</p>-->
-<!--              </figure>-->
-
-
-<!--          </div>-->
-<!--          <div class="column is-11">-->
-<!--              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>-->
-<!--              <a href="#" class="link has-text-white"><img src="{% static 'inopolis/img/svg/message-circle-dots-svgrepo-com.svg' %}" alt=""><strong>Reply</strong></a>-->
-
-<!--          </div>-->
-<!--        </div>-->
-
-<!--        <div class="columns">-->
-<!--          <div class="column ">-->
-<!--              <figure class="image is-128x128">-->
-<!--                  <img src="{% static 'inopolis/img/profile_pic.jpeg' %}" alt="">-->
-<!--                  <p>User nickname</p>-->
-<!--              </figure>-->
-
-
-<!--          </div>-->
-<!--          <div class="column is-11">-->
-<!--              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto, velit nesciunt! Blanditiis labore perspiciatis sequi error accusamus. Nam quos necessitatibus sapiente voluptate rerum laborum animi.</p>-->
-<!--              <a href="#" class="link has-text-white"><img src="{% static 'inopolis/img/svg/message-circle-dots-svgrepo-com.svg' %}" alt=""><strong>Reply</strong></a>-->
-
-<!--          </div>-->
-<!--        </div>-->
-
-      </div>
-
-
+            <br><br>
+{% endfor %}
+            {% endif %}
+            {% if request.user.is_authenticated %}
+                <form method='POST'>
+                    {% csrf_token %}
+                    {{ comment_form|crispy }}
+                    <div class="control">
+                      <button class="button is-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+            {% else %}
+    <p>Только авторизованные пользователи могут писать комментарии</p>
+            {% endif %}
+{% endif %}
 
 </div>
-{% endif %}
 
 
 

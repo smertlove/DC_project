@@ -24,16 +24,19 @@
           </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">
-              Action
-            </a>
-            <a class="navbar-item" href="#">
-              Drama
-            </a>
-            <a class="navbar-item" href="#">
-              Comedy
-            </a>
-            <hr class="navbar-divider">
+            {% if gan == 0 %}
+              <li>All</li>
+            {% else %}
+              <a class="navbar-item" href="{% url 'index'%}">All</a>
+            {% endif %}
+
+            {% for genre in genres %}
+                {% if genre.pk == gen %}
+                  <li>{{ genre.name }}</li>
+                {% else %}
+                  <a class="navbar-item" href="{% url 'show_genre' pk=genre.id %}">{{ genre.name }}</a>
+                {% endif %}
+            {% endfor %}
             <a class="navbar-item" href="#">
               Report an issue
             </a>

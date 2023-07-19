@@ -1,3 +1,4 @@
+from audioop import reverse
 from django.db import models
 from django.conf import settings
 
@@ -7,6 +8,7 @@ class Genre(models.Model):
 
     def __str__(self) -> str:
         return self.name
+
 
 class Film(models.Model):
 

@@ -1,46 +1,68 @@
-from django.shortcuts import render
-from .models import Film, Comment
-from django.contrib import auth
+
+from django.shortcuts import render, get_object_or_404, redirect
+from .forms import CommentForm
+from .models import Film, Comment, Genre
 from django.http import JsonResponse
 import random
 
-def index(request):
-    all_films = Film.objects.all()
+def genre(request, films):
+    genres = Genre.objects.all()
     request.COOKIES.setdefault("color_theme", "dark")
-    return render(request, 'inopolis/index.html', {'films': all_films})
+    return render(request, 'inopolis/index.html', {
+        'films': films,
+        'genres': genres,
+        'gen': 0,
+    })
+
+def index(request):
+    films = Film.objects.all()
+    return genre(request, films)
+
+def show_genre(request, pk):
+    films = Film.objects.filter(genre=pk)
+    return genre(request, films)
 
 
-# @login_required
-# @require_http_methods(["POST"])
-# def add_comment(request, film_id):
-#     film = Film.objects.get(id = film_id)
-#     comment = Comment.objects.get(film_id = film_id)
-#     comment.film = film
-#     comment.user = auth.get_user(id = comment.user_id)
-#     comment.save()
-#     try:
-#         comment.path.extend(Comment.objects.get(id=form.cleaned_data['parent_comment']).path)
-#         comment.path.append(comment.id)
-#     except ObjectDoesNotExist:
-#         comment.path.append(comment.id)
-#
-#     comment.save()
-#
-#     return redirect(article.get_absolute_url())
+def add_comment(request, pk):
+    comment_form = CommentForm(request.POST)
+    if comment_form.is_valid():
+        content = request.POST.get('content')
+        comment = Comment(content=content, film_id=pk, user_id=request.user.id)
+        comment.save()
+        return redirect('film_page', pk=pk)
+
 
 def random_film_page(request):
     last_id = Film.objects.last().id
     random_id = random.randint(1, last_id)
-    film = Film.objects.get(id = random_id)
-    genre = film.genre.get()
-    return render(request, 'inopolis/film_page.html', {
-        'film': film,
-        'genre': genre,
-    })
+    if request.method == 'POST':
+        return add_comment(request, random_id)
+    else:
+        film = Film.objects.get(id = random_id)
+        genre = film.genre.get()
+        comments = Comment.objects.all().filter(film_id=random_id)
+        comment_form = CommentForm()
+        return render(request, 'inopolis/film_page.html', {
+            'film': film,
+            'genre': genre,
+            'comments': comments,
+            'comment_form': comment_form,
+        })
+
 
 def film_page(request, pk):
-    film = Film.objects.get(id = pk)
-    return render(request, 'inopolis/film_page.html', {'film': film})
+    if request.method == 'POST':
+        return add_comment(request, pk)
+    else:
+        film = Film.objects.get(id=pk)
+        comments = Comment.objects.all().filter(film_id=pk)
+        comment_form = CommentForm()
+        return render(request, 'inopolis/film_page.html', {
+            'film': film,
+            'comments': comments,
+            'comment_form': comment_form,
+        })
+
 
 
 

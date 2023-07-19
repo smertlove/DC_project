@@ -49,7 +49,6 @@ def register(request):
 @transaction.atomic
 def edit_profile(request):
     if request.method == 'POST':
-        print(request.FILES)
         user_form = UserForm(request.POST, instance=request.user)
         profile_form = ProfileForm(request.POST, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
