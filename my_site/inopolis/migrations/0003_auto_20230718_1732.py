@@ -3,20 +3,7 @@ from django.db import migrations
 import datetime
 
 
-
-
-
 def default_films(apps, schema_editor):
-    description1 = "Experienced climber Pam climbs Mount Washington, but decides to turn back, fearing a severe snowstorm. On the way down, she meets a stuck man and takes the liberty to help him. Now they need to get down the mountain before night falls."
-    description2 = "A 2008 American military action film directed by Sylvester Stallone, who also acted as a co-author of the script and the performer of the main role. The fourth film in the series is about Vietnam War veteran John Rambo. The release in the cinema of Russia took place on January 24, 2008."
-    description3 = "Four-fingered Frankie had to smuggle the stolen diamond from England to the USA to his boss Evie. But instead, the hero finds himself in the epicenter of big trouble. Betting on an underground boxing match, Frankie gets into a cycle of very undesirable events. A complex intrigue unfolds around the hero and his cargo with the participation of many colorful characters of the London underworld — a Russian gangster, three hapless robbers, a cunning boxer and a gloomy bully of a formidable mafia. Everyone strives to hit a Big Jackpot alone. And everything ends with an unexpected and witty ending."
-    Films = apps.get_model('inopolis', 'Film')
-    IS = Films.objects.create(title="Infinite Storm", description=description1, rating="R", director="Malgorzata Shumowska", producer="Michal Englert", writer="Taya Gagne", release_date_theaters=datetime.date(2022,3,25), release_date_streaming=datetime.date(2023, 7, 17), data='inopolis/video/beskonecnaya_burya.mp4', picture='inopolis/img/pictures/infinite_storm.jpg')
-    IS.genre.create(name="drama")
-    R = Films.objects.create(title="Rambo IV", description=description2, rating="G", director="Sylvester Stallone", producer="Kevin King Templeton, Avi Lerner", writer="Art Monterastelli, Sylvester Stallone, David Morell", release_date_theaters=datetime.date(2008, 1, 23), release_date_streaming=datetime.date(2023, 7, 17), data='inopolis/video/rambo4.mp4', picture='inopolis/img/pictures/rambo4.jpg')
-    R.genre.create(name="action")
-    S = Films.objects.create(title="Snatch", description=description3, rating="PG", director="Guy Ritchie", producer="Matthew Vaughn, Michael Dreyer, Stephen Marks", writer="Mel Brooks, Thomas Mian", release_date_theaters=datetime.date(2005, 12, 16), release_date_streaming=datetime.date(2023, 7, 17), data='inopolis/video/snatch.mp4', picture='inopolis/img/pictures/snatch.jpg')
-    S.genre.create(name='comedy')
 
     genres = (
         "comedy",
@@ -32,17 +19,215 @@ def default_films(apps, schema_editor):
         "animated",
         "adventure",
         "action",
+        "war",
     )
 
-    Genre = apps.get_model('inopolis', 'Genre')
+    Genre = apps.get_model("inopolis", "Genre")
 
     for c in genres:
         Genre.objects.create(name=c)
 
+    comedy = Genre.objects.get(pk=1)
+    western = Genre.objects.get(pk=2)
+    thriller = Genre.objects.get(pk=3)
+    science_fiction = Genre.objects.get(pk=4)
+    romance = Genre.objects.get(pk=5)
+    musical = Genre.objects.get(pk=6)
+    horror = Genre.objects.get(pk=7)
+    historical = Genre.objects.get(pk=8)
+    fantasy = Genre.objects.get(pk=9)
+    drama = Genre.objects.get(pk=10)
+    animated = Genre.objects.get(pk=11)
+    adventure = Genre.objects.get(pk=12)
+    action = Genre.objects.get(pk=13)
+    war = Genre.objects.get(pk=14)
+
+    films = (
+        (
+            {
+                "title": "Infinite Storm",
+                "description": "Experienced climber Pam climbs Mount Washington, but decides to turn back, fearing a severe snowstorm. On the way down, she meets a stuck man and takes the liberty to help him. Now they need to get down the mountain before night falls.",
+                "rating": "R",
+                "director": "Malgorzata Shumowska",
+                "producer": "Michal Englert",
+                "writer": "Taya Gagne",
+                "release_date_theaters": datetime.datetime.strptime(
+                    "2022, 3, 25", "%Y, %m, %d"
+                ).date(),
+                "release_date_streaming": datetime.datetime.strptime(
+                    "2023, 7, 17", "%Y, %m, %d"
+                ).date(),
+                "picture": "inopolis/img/pictures/infinite_storm.jpg",
+                "data": "inopolis/video/beskonecnaya_burya.mp4",
+            },
+            (drama,),
+        ),
+        (
+            {
+                "title": "Rambo IV",
+                "description": "A 2008 American military action film directed by Sylvester Stallone, who also acted as a co-author of the script and the performer of the main role. The fourth film in the series is about Vietnam War veteran John Rambo. The release in the cinema of Russia took place on January 24, 2008.",
+                "rating": "R",
+                "director": "Sylvester Stallone",
+                "producer": "Kevin King Templeton, Avi Lerner",
+                "writer": "Art Monterastelli, Sylvester Stallone, David Morell",
+                "release_date_theaters": datetime.datetime.strptime(
+                    "2008, 1, 23", "%Y, %m, %d"
+                ).date(),
+                "release_date_streaming": datetime.datetime.strptime(
+                    "2023, 7, 17", "%Y, %m, %d"
+                ).date(),
+                "picture": "inopolis/img/pictures/rambo4.jpg",
+                "data": "inopolis/video/rambo4.mp4",
+            },
+            (action,),
+        ),
+        (
+            {
+                "title": "Snatch",
+                "description": "Four-fingered Frankie had to smuggle the stolen diamond from England to the USA to his boss Evie. But instead, the hero finds himself in the epicenter of big trouble. Betting on an underground boxing match, Frankie gets into a cycle of very undesirable events. A complex intrigue unfolds around the hero and his cargo with the participation of many colorful characters of the London underworld — a Russian gangster, three hapless robbers, a cunning boxer and a gloomy bully of a formidable mafia. Everyone strives to hit a Big Jackpot alone. And everything ends with an unexpected and witty ending.",
+                "rating": "R",
+                "director": "Guy Ritchie",
+                "producer": "Matthew Vaughn, Michael Dreyer, Stephen Marks",
+                "writer": "Mel Brooks, Thomas Mian",
+                "release_date_theaters": datetime.datetime.strptime(
+                    "2005, 12, 16", "%Y, %m, %d"
+                ).date(),
+                "release_date_streaming": datetime.datetime.strptime(
+                    "2023, 7, 17", "%Y, %m, %d"
+                ).date(),
+                "picture": "inopolis/img/pictures/snatch.jpg",
+                "data": "inopolis/video/snatch.mp4",
+            },
+            (comedy, drama),
+        ),
+        (
+            {
+                "title": "STAR WARS: EPISODE III - REVENGE OF THE SITH",
+                "description": "It has been three years since the Clone Wars began. Jedi Master Obi-Wan Kenobi (Ewan McGregor) and Jedi Knight Anakin Skywalker (Hayden Christensen) rescue Chancellor Palpatine (Ian McDiarmid) from General Grievous, the commander of the droid armies, but Grievous escapes. Suspicions are raised within the Jedi Council concerning Chancellor Palpatine, with whom Anakin has formed a bond. Asked to spy on the chancellor, and full of bitterness toward the Jedi Council, Anakin embraces the Dark Side.",
+                "rating": "PG-13",
+                "director": "George Lucas",
+                "producer": "George Lucas, Rick McCallum",
+                "writer": "George Lucas",
+                "release_date_theaters": datetime.datetime.strptime(
+                    "2005, 05, 19", "%Y, %m, %d"
+                ).date(),
+                "release_date_streaming": datetime.datetime.strptime(
+                    "2005, 10, 01", "%Y, %m, %d"
+                ).date(),
+                "picture": "inopolis/img/pictures/sw3.jpg",
+                "data": "inopolis/video/sw3.mp4",
+            },
+            (science_fiction, adventure, fantasy),
+        ),
+        (
+            {
+                "title": "THE HATEFUL EIGHT",
+                "description": 'While racing toward the town of Red Rock in post-Civil War Wyoming, bounty hunter John "The Hangman" Ruth (Kurt Russell) and his fugitive prisoner (Jennifer Jason Leigh) encounter another bounty hunter (Samuel L. Jackson) and a man who claims to be a sheriff. Hoping to find shelter from a blizzard, the group travels to a stagecoach stopover located on a mountain pass. Greeted there by four strangers, the eight travelers soon learn that they may not make it to their destination after all.',
+                "rating": "R",
+                "director": "Quentin Tarantino",
+                "producer": "Richard N. Gladstein, Stacey Sher, Shannon McIntosh",
+                "writer": "Quentin Tarantino",
+                "release_date_theaters": datetime.datetime.strptime(
+                    "2015, 12, 30", "%Y, %m, %d"
+                ).date(),
+                "release_date_streaming": datetime.datetime.strptime(
+                    "2016, 03, 29", "%Y, %m, %d"
+                ).date(),
+                "picture": "inopolis/img/pictures/eight.png",
+                "data": "inopolis/video/eight.mp4",
+            },
+            (western,),
+        ),
+        (
+            {
+                "title": "INGLOURIOUS BASTERDS",
+                "description": "It is the first year of Germany's occupation of France. Allied officer Lt. Aldo Raine (Brad Pitt) assembles a team of Jewish soldiers to commit violent acts of retribution against the Nazis, including the taking of their scalps. He and his men join forces with Bridget von Hammersmark, a German actress and undercover agent, to bring down the leaders of the Third Reich. Their fates converge with theater owner Shosanna Dreyfus, who seeks to avenge the Nazis' execution of her family.",
+                "rating": "R",
+                "director": "Quentin Tarantino",
+                "producer": "Lawrence Bender",
+                "writer": "Quentin Tarantino",
+                "release_date_theaters": datetime.datetime.strptime(
+                    "2009, 08, 21", "%Y, %m, %d"
+                ).date(),
+                "release_date_streaming": datetime.datetime.strptime(
+                    "2009, 12, 15", "%Y, %m, %d"
+                ).date(),
+                "picture": "inopolis/img/pictures/basterds.jpeg",
+                "data": "inopolis/video/basterds.mp4",
+            },
+            (war, comedy, drama),
+        ),(
+            {
+                "title": "THE GOOD, THE BAD AND THE UGLY",
+                "description": "In the Southwest during the Civil War, a mysterious stranger, Joe (Clint Eastwood), and a Mexican outlaw, Tuco (Eli Wallach), form an uneasy partnership -- Joe turns in the bandit for the reward money, then rescues him just as he is being hanged. When Joe's shot at the noose goes awry during one escapade, a furious Tuco tries to have him murdered. The men re-team abruptly, however, to beat out a sadistic criminal and the Union army and find $20,000 that a soldier has buried in the desert.",
+                "rating": "R",
+                "director": "Sergio Leone",
+                "producer": "Alberto Grimaldi",
+                "writer": "Agenore Incrocci, Furio Scarpelli, Luciano Vincenzoni, Sergio Leone",
+                "release_date_theaters": datetime.datetime.strptime(
+                    "1967, 12, 20", "%Y, %m, %d"
+                ).date(),
+                "release_date_streaming": datetime.datetime.strptime(
+                    "2006, 11, 07", "%Y, %m, %d"
+                ).date(),
+                "picture": "inopolis/img/pictures/good_bad_ugly.jpg",
+                "data": "inopolis/video/good_bad_ugly.mp4",
+            },
+            (western,),
+        ),
+        (
+            {
+                "title": "THE QUICK AND THE DEAD",
+                "description": 'A mysterious woman gunslinger, Ellen (Sharon Stone), saunters into the town of Redemption looking for revenge. Her father was killed by the town\'s sadistic mayor, Herod (Gene Hackman), who is in the midst of organizing a quick-draw tournament. The lady enters, joining a cast of miscreants and outlaws for a brutal competition in which the loser dies. Among the competitors is "The Kid" (Leonardo DiCaprio), an upstart who has his own score to settle with Herod.',
+                "rating": "R",
+                "director": "Sam Raimi",
+                "producer": "Allen Shapiro, Patrick Markey, Joshua Donen",
+                "writer": "Simon Moore",
+                "release_date_theaters": datetime.datetime.strptime(
+                    "1995, 02, 10", "%Y, %m, %d"
+                ).date(),
+                "release_date_streaming": datetime.datetime.strptime(
+                    "2001, 11, 29", "%Y, %m, %d"
+                ).date(),
+                "picture": "inopolis/img/pictures/quick.jpg",
+                "data": "inopolis/video/quick.mp4",
+            },
+            (western, action),
+        ),
+        (
+            {
+                "title": "KILL BILL: VOL. 1",
+                "description": "A former assassin, known simply as The Bride (Uma Thurman), wakes from a coma four years after her jealous ex-lover Bill (David Carradine) attempts to murder her on her wedding day. Fueled by an insatiable desire for revenge, she vows to get even with every person who contributed to the loss of her unborn child, her entire wedding party, and four years of her life. After devising a hit list, The Bride sets off on her quest, enduring unspeakable injury and unscrupulous enemies.",
+                "rating": "R",
+                "director": "Quentin Tarantino",
+                "producer": "Lawrence Bender",
+                "writer": "Quentin Tarantino",
+                "release_date_theaters": datetime.datetime.strptime(
+                    "2003, 10, 10", "%Y, %m, %d"
+                ).date(),
+                "release_date_streaming": datetime.datetime.strptime(
+                    "2004, 04, 13", "%Y, %m, %d"
+                ).date(),
+                "picture": "inopolis/img/pictures/kill_bill.jpg",
+                "data": "inopolis/video/kill_bill.mp4",
+            },
+            (action,),
+        ),
+    )
+
+    Films = apps.get_model("inopolis", "Film")
+
+    for f in films:
+        print(1)
+        c = Films.objects.create(**(f[0]))
+        c.genre.add(*(f[1]))
+
+
+
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('inopolis', '0002_film_picture_alter_film_data'),
+        ("inopolis", "0002_film_picture_alter_film_data"),
     ]
 
     operations = [migrations.RunPython(default_films)]

@@ -81,6 +81,7 @@ def _live_search(pattern):
 
 # вьюха
 def live_search(request):
+    print(1)
 
     pattern = request.GET.get('pattern')
     # if request.is_ajax():
