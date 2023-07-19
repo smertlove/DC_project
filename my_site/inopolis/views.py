@@ -39,7 +39,7 @@ def random_film_page(request):
         return add_comment(request, random_id)
     else:
         film = Film.objects.get(id = random_id)
-        genre = film.genre.get()
+        genre = film.genre.filter(film = random_id)
         comments = Comment.objects.all().filter(film_id=random_id)
         comment_form = CommentForm()
         return render(request, 'inopolis/film_page.html', {
