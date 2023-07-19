@@ -24,16 +24,19 @@
           </a>
 
           <div class="navbar-dropdown">
-            <a class="navbar-item" href="#">
-              Action
-            </a>
-            <a class="navbar-item" href="#">
-              Drama
-            </a>
-            <a class="navbar-item" href="#">
-              Comedy
-            </a>
-            <hr class="navbar-divider">
+            {% if gan == 0 %}
+              <li>All</li>
+            {% else %}
+              <a class="navbar-item" href="{% url 'index'%}">All</a>
+            {% endif %}
+
+            {% for genre in genres %}
+                {% if genre.pk == gen %}
+                  <li>{{ genre.name }}</li>
+                {% else %}
+                  <a class="navbar-item" href="{% url 'show_genre' pk=genre.id %}">{{ genre.name }}</a>
+                {% endif %}
+            {% endfor %}
             <a class="navbar-item" href="#">
               Report an issue
             </a>
@@ -52,6 +55,38 @@
           </div>
         </div>
       </div>
+
+
+
+      <div class="navbar-item">
+
+
+
+
+        <div class="fluid" id="search">
+          <form class="d-flex"  action="{% url 'live-search' %}" id="myForm"> <!-- в action надо написать имя вьюхи!!!!! -->
+
+            <div class="field has-addons">
+              <div class="control">
+                <input class="input is-dark" type="search" placeholder="Search..." id="myInput"  name="word" autocomplete="off">
+              </div>
+              <div class="control">
+                <a class="button is-dark">
+                  Search
+                </a>
+              </div>
+            </div>
+
+
+
+          </form>
+          <div  id="mySuggestions"></div>
+      </div>
+      </div>
+
+
+
+
 
       <div class="navbar-end">
         <div class="navbar-item">
@@ -77,3 +112,11 @@
 
   <script src="{% static 'inopolis/js/navbarMenu.js' %}"></script>
   <script src="{% static 'inopolis/js/ColorThemeSwitch.js' %}"></script>
+  <script src="{% static 'inopolis/js/jquery 3.6.0.js' %}"></script>
+  <script src="{% static 'inopolis/js/livesearch.js' %}"></script>
+  <script>
+    $('#myInput').on('keyup', function (){
+      let pattern = this.value;
+      liveSearch("{% url 'live-search' %}",  pattern);
+})
+</script>
