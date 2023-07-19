@@ -17,17 +17,19 @@
             <article class="columns featured">
 
                 <div class="column is-7 ">
-                  <img src="{% static film.picture %}" alt="">   <!-- "{% static film.picture %}"-->
+                  <img src="{% static film.picture %}" alt="">
                 </div>
                 <div class="column is-5 featured-content va">
                   <div class="content all-text-white">
 
                     <h2 class="title ">{{ film.title }}</h2>
-                    <h3 ><strong>Genre:</strong>{{ film.genre }}</h3>
+                    <h3 ><strong>Genre:</strong>
+                        {% for gen in film.genre.values %}
+                            {{ gen.name }}
+                        {% endfor %}
+                    </h3>
                     <p ><strong>Description:</strong>{{ film.description }}</p>
                     <p><strong>Rating:</strong>{{ film.rating }}</p>
-
-
                     <br>
                     <a href="{% url 'film_page' film.id %}" class="button is-dark">Read More</a>
                   </div>

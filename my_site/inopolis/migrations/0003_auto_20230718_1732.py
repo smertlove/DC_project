@@ -223,7 +223,6 @@ def default_films(apps, schema_editor):
         c.genre.add(*(f[1]))
 
 
-
 class Migration(migrations.Migration):
 
     dependencies = [
